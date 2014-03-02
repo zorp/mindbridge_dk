@@ -1,0 +1,228 @@
+/*
+
+Theme Name: Simple Grid Theme Responsive
+
+Theme URI: http://www.dessign.net/simplegridtheme
+
+Description: Simple Grid Theme  for WordPress is stylish, customizable, simple, and readable. Perfect for any illustrator or graphic designer. 
+
+Version: 2.0
+
+Author: Marios Lublinski
+
+Author URI: http://www.dessign.net
+
+Tags: 4 column theme, clean, portfolio
+
+*/
+
+
+/* Global */
+* { margin: 0; padding: 0; }
+body { font-size: 12px; font-family: arial, verdana, georgia; color: #666; background: url('images/cont-shadow.png') repeat-y; background-position: top center; }
+h1,h2,h3,h4,h5,p { margin: 10px 0; }
+.left { float: left; }
+.right { float: right; }
+.clear { clear: both; }
+img { border: none; }
+a { color: #333;}
+a:hover { text-decoration:underline; color:#333; }
+#main_container { width: 1056px; margin: 0 auto; }
+
+/* Header */
+#header { padding: 10px 28px; }
+.logo { float: left; }
+
+.social_icons { list-style-type: none; float: right; }
+.social_icons li { float: left; margin-left: 10px; }
+.search_cont { float: right; margin-top: 15px; position: relative; }
+.search_cont input[type=text] { width: 176px; height: 23px; border: 1px solid #E5E5E5; }
+.search_icon { position: absolute; top: 7px; right: 8px; }
+
+#menu_container { border-top: 1px dotted #DDDDDD; border-bottom: 5px solid #DDDDDD; padding: 0px 28px; }
+#menu_container ul { list-style-type: none; float: left; padding: 5px 0; }
+#menu_container ul li { float: left; }
+#menu_container ul li a { display: block; color: #000; text-decoration: none; padding: 5px 10px; margin: 0 10px; }
+#menu_container ul li a:hover { background-color: #000; color: #fff; -moz-border-radius: 3px; -webkit-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; }
+#menu_container ul li.current-menu-item a, #menu_container ul li.current_page_item a  { background-color: #000; color: #fff; -moz-border-radius: 3px; -webkit-border-radius: 3px; -khtml-border-radius: 3px; border-radius: 3px; }
+#menu_container .cat_menu { border-left: 1px dotted #DDDDDD; }
+
+/* Content */
+#content_container { width: 1000px; margin: 0 auto; padding: 10px 0; }
+.featured_banner { margin-bottom: 25px; margin-top: 15px; }
+.featured_banner img { width: 1000px; height: 100px; }
+
+.home_post_box { float: left; width: 321px; margin-right: 18px; margin-bottom: 25px; border-radius: 3px;
+-moz-border-radius: 3px; -webkit-border-radius: 3px; -khtml-border-radius: 3px; overflow: hidden; position: relative;
+/*
+-moz-box-shadow: 2px 2px 5px 0px #ccc,0px 1px 0px rgba(204,204,204,.3) inset;
+-webkit-box-shadow: 2px 2px 5px 0px #ccc, 0px 1px 0px rgba(204,204,204,.3) inset;
+box-shadow: 2px 2px 5px 0px #ccc,0px 1px 0px rgba(204,204,204,.3) inset;*/ }
+.home_blog_box_last { margin-right: 0 !important; }
+.home_post_box img { width: 321px; height: 209px; }
+.home_post_title_cont { position: absolute; bottom: 10px; width: 321px; background-color:rgba(0,0,0,0.5); text-align: center; padding: 5px 0; }
+.home_post_title_cont h3 { color: #fff; font-size: 14px; color: #fff; margin: 0; font-weight: normal; opacity:10; filter:alpha(opacity=100); }
+.home_post_title_cont h4 { margin: 0; font-size: 11px; font-weight: normal; }
+.home_post_title_cont h4 a { color: #8093a4; text-decoration: none; }
+.home_post_title_cont h4 a:hover { text-decoration: underline; }
+
+.blog_box_cont { float: left; width: 321px; margin-right: 18px; }
+.blog_box_cont .home_post_box { margin-right: 0; margin-bottom: 0; }
+.blog_box { margin-bottom: 0; margin-right: 0; }
+.blog_content { margin-bottom: 25px; padding-top: 10px; float: left; }
+
+.home_post_desc { width: 235px; padding: 15px 10px; left: 34px; top: 0; position: absolute; color: #fff; background-color:rgba(0,0,0,0.5); font-size: 10px; display: none; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; overflow: hidden; }
+
+.blog_left { float: left; width: 660px; }
+.blog_left h1 { margin-top: 0; font-size: 17px; }
+.blog_nav_cont { padding-bottom: 15px; }
+.blog_nav_cont a { color: #000; text-decoration: none; }
+.blog_nav_cont a:hover { text-decoration: underline; }
+
+.home_post_box_last { margin-right: 0; }
+
+#commentform input[type=submit] { background-color: #333; border: none; color: #fff; padding: 8px 10px; }
+
+/* Sidebar */
+#sidebar { float: right; width: 260px; }
+.side_box { margin-bottom: 25px; }
+.side_box h3 { background-color: #E4E4E2; padding: 5px 10px; color: #666666; font-size: 16px; margin: 0 0 10px 0; }
+.side_box ul { list-style-type: none; padding: 0 10px; }
+.side_box ul li { margin-bottom: 3px; }
+.side_box .textwidget { padding: 0 10px; }
+.side_box a { color: #000; text-decoration: none; }
+.side_box a:hover { text-decoration: underline; }
+
+/* Footer */
+#footer { margin-top: 25px; padding: 10px 0; border-top: 5px solid #DDDDDD; }
+.footer_widgets_cont { padding: 0 8px 0 28px; }
+
+.footer_box { float: left; width: 320px; margin-right: 20px; margin-bottom: 20px; }
+.footer_box_last { margin-right: 0; }
+.footer_box h3 { font-size: 16px; }
+.footer_box a { color: #000; text-decoration: none; }
+.footer_box a:hover { text-decoration: underline; }
+
+.footer_box ul, .footer_box ol { list-style-type: none; margin-left: 3px; }
+.footer_box ul li, .footer_box ol li { margin-bottom: 3px; }
+
+.footer_copyright { padding: 10px 25px; text-align: right; border-top: 1px dotted #DDDDDD; border-bottom: 1px dotted #DDDDDD; }
+.footer_copyright a { color: #000; text-decoration: none; }
+.footer_copyright a:hover { text-decoration: underline; }
+
+
+
+
+
+/* for mobile */
+@media screen and (max-width: 480px) {
+
+#main_container { width: 320px; }
+#header { padding: 10px 0px; }
+.logo { float: none; max-width: 300px; margin: 0 auto; }
+.search_cont { display: none; }
+
+#menu_container { padding: 0px 0px; width: 320px; margin: 0 auto; }
+#menu_container ul { list-style-type: none; width: 150px }
+#menu_container ul li { float: none; }
+#menu_container ul li a { padding: 5px 10px; margin: 0 0px 5px; }
+#menu_container .cat_menu { border-left: none; float: right; }
+
+#content_container { width: 320px; }
+.featured_banner { display: none; }
+.featured_banner img { width: 320px; height: 32px; }
+
+.blog_box_cont { width: 300px; float: none; margin: 0 auto; }
+.blog_content { float: none; width: 300px; margin-left: auto; margin-right: auto; }
+
+.home_post_box { width: 300px; float: none; margin: 0 auto 25px; }
+.home_post_box img { width: 300px; height: 200px; }
+
+.home_post_title_cont { width: 300px; }
+.home_post_desc { width: 200px; left: 35px; }
+
+.blog_left { float: none; width: 300px; margin: 0 auto; }
+.blog_left .left_content img { width: 300px; height:inherit; }
+#commentform textarea { width: 300px; }
+#sidebar { display: none; }
+#footer { display: none; }
+
+}
+
+
+
+
+/* for tablet */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+
+#main_container { width: 728px; }
+#header { padding: 10px 0px; }
+
+#menu_container { padding: 0px 0px; }
+#content_container { width: 728px; }
+.featured_banner img { width: 728px; height: 72px; }
+
+/*
+.home_post_box { width: 230px; }
+.home_post_box img { width: 230px; height: 109px; }
+*/
+
+.home_post_box { width: 346px; margin-left: 9px; margin-right: 9px; }
+.home_post_box img { width: 346px; height: 219px; }
+.home_post_box_last { margin-right: 9px; }
+
+.blog_box_cont .home_post_box { margin-left: 0; }
+
+/*.home_post_title_cont { width: 231px; }
+.home_post_desc { width: 135px; left: 40px; }*/
+
+.home_post_title_cont { width: 346px; }
+.home_post_desc { width: 251px; left: 40px; }
+
+.blog_left { float: left; width: 500px; }
+.blog_left .left_content img { width: 500px; height:inherit; }
+#sidebar { float: right; width: 200px; }
+
+.footer_widgets_cont { padding: 0 0px 0 0px; }
+.footer_box { width: 229px; }
+
+/*
+#single_left { width: 500px; }
+#single_left .single_content img { max-width: 500px; height: inherit; }
+#sidebar { width: 200px; float: right; margin-top: 20px; }
+
+
+.footer_box { width: 154px; }
+.cat_menu_cont { width: 190px; }*/
+
+}
+
+
+
+
+
+/* @group rounded-corners pics */
+
+
+
+
+
+
+/* IE6 fix */
+.ie6_width .tr {
+	right: -1px;
+}
+
+.ie6_width .br {
+	right: -1px;
+}
+
+.ie6_height .br {
+	bottom: -1px;
+}
+
+.ie6_height .bl {
+	bottom: -1px;
+}
+
+/* @end */
