@@ -12,10 +12,10 @@
 </div><!-- #page .hfeed .site -->
 
 	<div id="colophon-wrap">
-		<div class="footer-widget"><?php dynamic_sidebar( 'footer-1' ); ?></div>
-		<div class="footer-widget"><?php dynamic_sidebar( 'footer-2' ); ?></div>
-		<div class="footer-widget"><?php dynamic_sidebar( 'footer-3' ); ?></div>
 		<footer id="colophon" class="site-footer" role="contentinfo">
+			<div class="footer-widget first"><?php dynamic_sidebar( 'footer-1' ); ?></div>
+			<div class="footer-widget"><?php dynamic_sidebar( 'footer-2' ); ?></div>
+			<div class="footer-widget last"><?php dynamic_sidebar( 'footer-3' ); ?></div>
 			<div class="site-info">
 				<?php do_action( 'untitled_credits' ); ?>
 				<a href="http://wordpress.org/" title="<?php esc_attr_e( 'A Semantic Personal Publishing Platform', 'untitled' ); ?>" rel="generator"><?php printf( __( 'Proudly powered by %s', 'untitled' ), 'WordPress' ); ?></a>.
