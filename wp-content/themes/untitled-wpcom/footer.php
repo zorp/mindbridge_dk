@@ -12,6 +12,9 @@
 </div><!-- #page .hfeed .site -->
 
 	<div id="colophon-wrap">
+		<div class="footer-widget"><?php dynamic_sidebar( 'footer-1' ); ?></div>
+		<div class="footer-widget"><?php dynamic_sidebar( 'footer-2' ); ?></div>
+		<div class="footer-widget"><?php dynamic_sidebar( 'footer-3' ); ?></div>
 		<footer id="colophon" class="site-footer" role="contentinfo">
 			<div class="site-info">
 				<?php do_action( 'untitled_credits' ); ?>
