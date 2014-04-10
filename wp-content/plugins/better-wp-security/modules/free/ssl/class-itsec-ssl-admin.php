@@ -65,7 +65,7 @@ class ITSEC_SSL_Admin {
 			if ( $itsec_enable_ssl ) {
 				update_post_meta( $id, 'itsec_enable_ssl', true );
 			} else {
-				update_post_meta( $id, 'itsec_enable_ssl', false );
+				delete_post_meta( $id, 'itsec_enable_ssl' );
 			}
 
 			return $itsec_enable_ssl;
@@ -356,7 +356,7 @@ class ITSEC_SSL_Admin {
 
 		settings_fields( 'security_page_toplevel_page_itsec_settings' );
 
-		echo '<input class="button-primary" name="submit" type="submit" value="' . __( 'Save Changes', 'it-l10n-better-wp-security' ) . '" />' . PHP_EOL;
+		echo '<input class="button-primary" name="submit" type="submit" value="' . __( 'Save All Changes', 'it-l10n-better-wp-security' ) . '" />' . PHP_EOL;
 
 		echo '</p>' . PHP_EOL;
 

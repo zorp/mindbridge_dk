@@ -68,6 +68,10 @@ if ( ! class_exists( 'ITSEC_Away_Mode_Setup' ) ) {
 		 * @return void
 		 */
 		public function execute_deactivate() {
+
+			delete_site_transient( 'itsec_away' );
+			delete_site_transient( 'itsec_away_mode' );
+
 		}
 
 		/**
@@ -97,6 +101,7 @@ if ( ! class_exists( 'ITSEC_Away_Mode_Setup' ) ) {
 				global $itsec_bwps_options, $itsec_globals;
 
 				$current_options = get_site_option( 'itsec_away_mode' );
+				$current_time = $itsec_globals['current_time'];
 
 				if ( $current_options === false ) {
 					$current_options = $this->defaults;
@@ -105,13 +110,32 @@ if ( ! class_exists( 'ITSEC_Away_Mode_Setup' ) ) {
 				$current_options['enabled'] = isset( $itsec_bwps_options['am_enabled'] ) && $itsec_bwps_options['am_enabled'] == 1 ? true : false;
 				$current_options['type']    = isset( $itsec_bwps_options['am_type'] ) && $itsec_bwps_options['am_type'] == 1 ? 1 : 2;
 
-				if ( isset( $current_options['am_startdate'] ) && isset( $current_options['am_starttime'] ) ) {
-					$current_options['start'] = $current_options['am_startdate'] + $current_options['am_starttime'];
+				if ( isset( $itsec_bwps_options['am_startdate'] ) && isset( $itsec_bwps_options['am_starttime'] ) ) {
+
+					$current_options['start'] = strtotime( date( 'Y-m-d', $itsec_bwps_options['am_startdate'] ) ) + intval( $itsec_bwps_options['am_starttime'] );
+
+				} elseif ( isset( $current_options['am_starttime'] ) && $current_options['type'] == 1 ) {
+
+					$current_options['start'] = strtotime( date( 'Y-m-d', $current_time ) ) + intval( $itsec_bwps_options['am_starttime'] );
+
+				} else {
+
+					$current_options['enabled'] = false; //didn't have the whole start picture so disable
 
 				}
 
-				if ( isset( $current_options['am_enddate'] ) && isset( $current_options['am_endtime'] ) ) {
-					$current_options['end'] = $current_options['am_enddate'] + $current_options['am_endtime'];
+				if ( isset( $itsec_bwps_options['am_enddate'] ) && isset( $itsec_bwps_options['am_endtime'] ) ) {
+
+					$current_options['end'] = strtotime( date( 'Y-m-d', $itsec_bwps_options['am_enddate'] ) ) + intval( $itsec_bwps_options['am_endtime'] );
+
+				} elseif ( isset( $itsec_bwps_options['am_endtime'] ) && $itsec_bwps_options['type'] == 1 ) {
+
+					$current_options['end'] = strtotime( date( 'Y-m-d', $current_time ) ) + intval( $itsec_bwps_options['am_endtime'] );
+
+				} else {
+
+					$current_options['enabled'] = false; //didn't have the whole start picture so disable
+
 				}
 
 				update_site_option( 'itsec_away_mode', $current_options );

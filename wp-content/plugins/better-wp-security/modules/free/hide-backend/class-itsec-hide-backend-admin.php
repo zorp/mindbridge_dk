@@ -56,7 +56,44 @@ class ITSEC_Hide_Backend_Admin {
 
 		if ( isset( get_current_screen()->id ) && strpos( get_current_screen()->id, 'security_page_toplevel_page_itsec_settings' ) !== false ) {
 
+			$new_slug = get_site_option( 'itsec_hide_backend_new_slug' );
+
+			if ( $new_slug !== false ) {
+
+				delete_site_option( 'itsec_hide_backend_new_slug' );
+
+				$new_slug = get_site_url() . '/' . $new_slug;
+
+				$slug_text = sprintf(
+					'%s%s%s%s%s',
+					__( 'Warning: Your admin URL has changed. Use the following URL to login to your site', 'it-l10n-better-wp-security' ),
+					PHP_EOL . PHP_EOL,
+					$new_slug,
+					PHP_EOL . PHP_EOL,
+					__( 'Please note this may be different than what you sent as the URL was sanitized to meet various requirements. A reminder has also been sent to the notification email(s) set in this plugins global settings.', 'it-l10n-better-wp-security' )
+				);
+
+				$this->send_new_slug( $new_slug );
+
+			} else {
+				$slug_text = false;
+			}
+
+			sprintf(
+				'%s %s %s',
+				__( 'Warning: Your admin URL has changed. Use the following URL to login to your site', 'it-l10n-better-wp-security' ),
+				get_site_url() . '/' . $new_slug,
+				__( 'Please note this may be different than what you sent as the URL was sanitized to meet various requirements.', 'it-l10n-better-wp-security' )
+			);
+
 			wp_enqueue_script( 'itsec_hide_backend_js', $this->module_path . 'js/admin-hide-backend.js', 'jquery', $itsec_globals['plugin_build'] );
+			wp_localize_script(
+				'itsec_hide_backend_js',
+				'itsec_hide_backend',
+				array(
+					'new_slug' => $slug_text,
+				)
+			);
 
 		}
 
@@ -207,6 +244,7 @@ class ITSEC_Hide_Backend_Admin {
 			$content = '<input name="itsec_hide_backend[slug]" id="itsec_hide_backend_strong_passwords_slug" value="' . sanitize_title( $this->settings['slug'] ) . '" type="text"><br />';
 			$content .= '<label for="itsec_hide_backend_strong_passwords_slug">' . __( 'Login URL:', 'it-l10n-better-wp-security' ) . trailingslashit( get_option( 'siteurl' ) ) . '<span style="color: #4AA02C">' . sanitize_title( $this->settings['slug'] ) . '</span></label>';
 			$content .= '<p class="description">' . __( 'The login url slug cannot be "login," "admin," "dashboard," or "wp-login.php" as these are use by default in WordPress.', 'it-l10n-better-wp-security' ) . '</p>';
+			$content .= '<p class="description"><em>' . __( 'Note: The output is limited to alphanumeric characters, underscore (_) and dash (-). Special characters such as "." and "/" are not allowed and will be converted in the same manner as a post title. Please review your selection before logging out.', 'it-l10n-better-wp-security' ) . '</em></p>';
 
 		}
 
@@ -234,6 +272,33 @@ class ITSEC_Hide_Backend_Admin {
 			$content = '<input name="itsec_hide_backend[theme_compat_slug]" id="itsec_hide_backend_strong_passwords_theme_compat_slug" value="' . $slug . '" type="text"><br />';
 			$content .= '<label for="itsec_hide_backend_strong_passwords_theme_compat_slug">' . __( '404 Slug:', 'it-l10n-better-wp-security' ) . trailingslashit( get_option( 'siteurl' ) ) . '<span style="color: #4AA02C">' . $slug . '</span></label>';
 			$content .= '<p class="description">' . __( 'The slug to redirect folks to when theme compatibility mode is enabled (just make sure it does not exist in your site).', 'it-l10n-better-wp-security' ) . '</p>';
+
+		}
+
+		echo $content;
+
+	}
+
+	/**
+	 * echos Hide Backend Slug  Field
+	 *
+	 * @since 4.0.6
+	 *
+	 * @return void
+	 */
+	public function hide_backend_post_logout_slug() {
+
+		if ( ( get_option( 'permalink_structure' ) == '' || get_option( 'permalink_structure' ) == false ) && ! is_multisite() ) {
+
+			$content = '';
+
+		} else {
+
+			$slug = sanitize_title( isset( $this->settings['post_logout_slug'] ) ? $this->settings['post_logout_slug'] : '' );
+
+			$content = '<input name="itsec_hide_backend[post_logout_slug]" id="itsec_hide_backend_strong_passwords_post_logout_slug" value="' . $slug . '" type="text"><br />';
+			$content .= '<label for="itsec_hide_backend_strong_passwords_post_logout_slug">' . __( 'Custom Action:', 'it-l10n-better-wp-security' ) . '</label>';
+			$content .= '<p class="description">' . __( 'WordPress uses the "action" variable to handle many login and logout functions. By default this plugin can handle the normal ones but some plugins and themes may utilize a custom action (such as logging out of a private post). If you need a custom action please enter it hear.', 'it-l10n-better-wp-security' ) . '</p>';
 
 		}
 
@@ -394,6 +459,14 @@ class ITSEC_Hide_Backend_Admin {
 			'hide_backend-settings'
 		);
 
+		add_settings_field(
+			'itsec_hide_backend[post_logout_slug]',
+			__( 'Custom Login Slug', 'it-l10n-better-wp-security' ),
+			array( $this, 'hide_backend_post_logout_slug' ),
+			'security_page_toplevel_page_itsec_settings',
+			'hide_backend-settings'
+		);
+
 		//Register the settings field for the entire module
 		register_setting(
 			'security_page_toplevel_page_itsec_settings',
@@ -421,7 +494,7 @@ class ITSEC_Hide_Backend_Admin {
 
 		settings_fields( 'security_page_toplevel_page_itsec_settings' );
 
-		echo '<input class="button-primary" name="submit" type="submit" value="' . __( 'Save Changes', 'it-l10n-better-wp-security' ) . '" />' . PHP_EOL;
+		echo '<input class="button-primary" name="submit" type="submit" value="' . __( 'Save All Changes', 'it-l10n-better-wp-security' ) . '" />' . PHP_EOL;
 
 		echo '</p>' . PHP_EOL;
 
@@ -489,9 +562,27 @@ class ITSEC_Hide_Backend_Admin {
 		$input['show-tooltip'] = ( isset( $this->settings['show-tooltip'] ) ? $this->settings['show-tooltip'] : false );
 
 		if ( isset( $input['slug'] ) ) {
+
 			$input['slug'] = sanitize_title( $input['slug'] );
+
 		} else {
+
 			$input['slug'] = 'wplogin';
+
+		}
+
+		if ( isset( $input['post_logout_slug'] ) ) {
+
+			$input['post_logout_slug'] = sanitize_title( $input['post_logout_slug'] );
+
+		} else {
+
+			$input['post_logout_slug'] = '';
+
+		}
+
+		if ( $input['slug'] != $this->settings['slug'] && $input['enabled'] === true ) {
+			add_site_option( 'itsec_hide_backend_new_slug', $input['slug'] );
 		}
 
 		if ( isset( $input['register'] ) && $input['register'] !== 'wp-register.php' ) {
@@ -608,6 +699,64 @@ class ITSEC_Hide_Backend_Admin {
 		$rewrite_rules[] = $this->build_rewrite_rules();
 
 		$itsec_files->set_rewrite_rules( $rewrite_rules );
+
+	}
+
+	/**
+	 * Sends an email to notify site admins of the new login url
+	 *
+	 * @param  string $new_slug the new login url
+	 *
+	 * @return void
+	 */
+	private function send_new_slug( $new_slug ) {
+
+		global $itsec_globals;
+
+		//Put the copy all together
+		$body = sprintf(
+			'<p>%s,</p><p>%s <a href="%s">%s</a>. %s <a href="%s">%s</a> %s.</p>',
+			__( 'Dear Site Admin', 'it-l10n-better-wp-security' ),
+			__( 'This friendly email is just a reminder that you have changed the dashboard login address on', 'it-l10n-better-wp-security' ),
+			get_site_url(),
+			get_site_url(),
+			__( 'You must now use', 'it-l10n-better-wp-security' ),
+			$new_slug,
+			$new_slug,
+			__( 'to login to your WordPress website', 'it-l10n-better-wp-security' )
+		);
+
+		//Setup the remainder of the email
+		$recipients = $itsec_globals['settings']['notification_email'];
+		$subject    = '[' . get_option( 'siteurl' ) . '] ' . __( 'WordPress Login Email Changed', 'it-l10n-better-wp-security' );
+		$subject    = apply_filters( 'itsec_lockout_email_subject', $subject );
+		$headers    = 'From: ' . get_bloginfo( 'name' ) . ' <' . get_option( 'admin_email' ) . '>' . "\r\n";
+
+		//Use HTML Content type
+		add_filter( 'wp_mail_content_type', array( $this, 'set_html_content_type' ) );
+
+		//Send emails to all recipients
+		foreach ( $recipients as $recipient ) {
+
+			if ( is_email( trim( $recipient ) ) ) {
+				wp_mail( trim( $recipient ), $subject, $body, $headers );
+			}
+
+		}
+
+		//Remove HTML Content type
+		remove_filter( 'wp_mail_content_type', array( $this, 'set_html_content_type' ) );
+
+	}
+
+	/**
+	 * Set HTML content type for email
+	 *
+	 * @return string html content type
+	 */
+	public function set_html_content_type() {
+
+		return 'text/html';
 
 	}
 

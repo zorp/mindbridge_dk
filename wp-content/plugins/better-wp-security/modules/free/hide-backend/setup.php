@@ -15,8 +15,9 @@ if ( ! class_exists( 'ITSEC_Hide_Backend_Setup' ) ) {
 				'enabled'           => false,
 				'slug'              => 'wplogin',
 				'register'          => 'wp-register.php',
-				'theme_compat'      => false,
-				'theme_compat_slug' => 'not_found'
+				'theme_compat'      => true,
+				'theme_compat_slug' => 'not_found',
+				'post_logout_slug'  => '',
 			);
 
 			if ( isset( $itsec_setup_action ) ) {
@@ -48,8 +49,6 @@ if ( ! class_exists( 'ITSEC_Hide_Backend_Setup' ) ) {
 		 * Execute module activation.
 		 *
 		 * @since 4.0
-		 *
-		 * @param  boolean $upgrade true if the plugin is updating
 		 *
 		 * @return void
 		 */
@@ -100,6 +99,7 @@ if ( ! class_exists( 'ITSEC_Hide_Backend_Setup' ) ) {
 		public function execute_deactivate() {
 
 			delete_site_transient( 'ITSEC_SHOW_HIDE_BACKEND_TOOLTIP' );
+			delete_site_option( 'itsec_hide_backend_new_slug' );
 
 		}
 
@@ -179,7 +179,7 @@ if ( ! class_exists( 'ITSEC_Hide_Backend_Setup' ) ) {
 					//Make sure we can write to the file
 					$perms = substr( sprintf( '%o', @fileperms( $config_file ) ), - 4 );
 
-					@chmod( $config_file, 0644 );
+					@chmod( $config_file, 0664 );
 
 					add_action( 'admin_init', array( $this, 'flush_rewrite_rules' ) );
 
