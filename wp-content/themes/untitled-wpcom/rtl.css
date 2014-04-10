@@ -75,7 +75,6 @@ body {
 }
 #main .post-thumb .header-wrapper {
 	float: right;
-	width: 42.3913043%;
 }
 .entry-title {
 	font-family: "raleway", sans-serif;
@@ -103,8 +102,9 @@ body {
 }
 #main .single-thumbnail a {
 	float: right;
-	margin-left: 30px;
-	max-width:43%;
+	margin-right: 0;
+	margin-left: 4.14285715%;
+	max-width: 43%;
 	position: relative;
 }
 #main .single-thumbnail a img{

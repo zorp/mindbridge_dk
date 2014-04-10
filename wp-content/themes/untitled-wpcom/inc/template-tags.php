@@ -74,7 +74,7 @@ function untitled_comment( $comment, $args, $depth ) {
 		case 'trackback' :
 	?>
 	<li class="post pingback">
-		<p><?php _e( 'Pingback:', 'untitled' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __( '(Edit)', 'untitled' ), ' ' ); ?></p>
+		<p><?php _e( 'Pingback:', 'untitled' ); ?> <?php comment_author_link(); ?><?php edit_comment_link( __( 'Edit', 'untitled' ), ' ' ); ?></p>
 	<?php
 			break;
 		default :
@@ -97,7 +97,7 @@ function untitled_comment( $comment, $args, $depth ) {
 						/* translators: 1: date, 2: time */
 						printf( __( '%1$s at %2$s', 'untitled' ), get_comment_date(), get_comment_time() ); ?>
 					</time></a>
-					<?php edit_comment_link( __( '(Edit)', 'untitled' ), ' ' );
+					<?php edit_comment_link( __( 'Edit', 'untitled' ), ' ' );
 					?>
 				</div><!-- .comment-meta .commentmetadata -->
 			</footer>

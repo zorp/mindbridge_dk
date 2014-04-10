@@ -89,33 +89,6 @@ function untitled_widgets_init() {
 		'before_title'  => '<h1 class="widget-title">',
 		'after_title'   => '</h1>',
 	) );
-
-	register_sidebar( array(
-		'name'          => __( 'Footer 1', 'untitled' ),
-		'id'            => 'footer-1',
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</div>',
-		'before_title'  => '<h1 class="widget-title">',
-		'after_title'   => '</h1>',
-	) );
-
-	register_sidebar( array(
-		'name'          => __( 'Footer 2', 'untitled' ),
-		'id'            => 'footer-2',
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</div>',
-		'before_title'  => '<h1 class="widget-title">',
-		'after_title'   => '</h1>',
-	) );
-
-	register_sidebar( array(
-		'name'          => __( 'Footer 3', 'untitled' ),
-		'id'            => 'footer-3',
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</div>',
-		'before_title'  => '<h1 class="widget-title">',
-		'after_title'   => '</h1>',
-	) );
 }
 add_action( 'widgets_init', 'untitled_widgets_init' );
 

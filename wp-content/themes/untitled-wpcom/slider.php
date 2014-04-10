@@ -30,7 +30,7 @@ endif;
 									endif;
 								?>
 							</div>
-							<h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'untitled' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+							<h2 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 						</div><!-- .slider-header -->
 						<div class="slide-meta">
 							<?php get_the_date(); ?>

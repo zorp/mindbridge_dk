@@ -2,7 +2,7 @@
 Theme Name: Untitled
 Theme URI: http://theme.wordpress.com/themes/untitled/
 Description: A nice bold theme. Features full-bleed featured posts and featured images, a fixed header, and subtle CSS3 transitions.
-Version: 1.1.1
+Version: 1.1.2
 Author: Automattic
 Author URI: http://theme.wordpress.com/
 License: GPL v2 or later
@@ -945,7 +945,7 @@ body.page-template-page-full-width-php.widget-area .site-content{
 }
 #main .post-thumb .header-wrapper {
 	float: left;
-	width: 42.3913043%;
+	width: 52.85714285%;
 }
 .entry-title {
 	font-family: "raleway", sans-serif;
@@ -971,9 +971,17 @@ body.page-template-page-full-width-php.widget-area .site-content{
 .entry-meta a:hover{
 	color: #999;
 }
+#main .single-thumbnail.genericon {
+	display: block;
+	width: auto;
+	height: auto;
+}
+#main .single-thumbnail.genericon-link:before {
+	content: none;
+}
 #main .single-thumbnail a {
 	float: left;
-	margin-right: 30px;
+	margin-right: 4.14285715%;
 	max-width:43%;
 	position: relative;
 }
@@ -1053,7 +1061,6 @@ body.page-template-page-full-width-php.widget-area .site-content{
 /* =Media
 ----------------------------------------------- */
 
-.site-header img,
 .entry-content img,
 .comment-content img,
 .widget img {
@@ -1067,10 +1074,12 @@ img[class*="wp-image-"],
 .widget img {
 	height: auto; /* Make sure images with WordPress-added height and width attributes are scaled correctly */
 }
-.site-header img,
 .entry-content img,
 img.size-full {
 	max-width: 100%;
+}
+.site-header img {
+	width: 100%;
 }
 .entry-content img.wp-smiley,
 .comment-content img.wp-smiley {
@@ -1387,21 +1396,21 @@ object {
 	display: block;
 }
 .widget_calendar #wp-calendar tbody a {
-	background-color: rgba(255, 255, 255, 0.1);
+	background-color: #999;
 	color: #fff;
 	display: block;
 }
 .widget_calendar #wp-calendar tbody a:hover {
-	background-color: rgba(255, 255, 255, 0.2);
+	background-color: #262626;
 }
 .widget_calendar #wp-calendar {
-	border: 1px solid rgba(255, 255, 255, 0.2);
+	border: 1px solid #ccc;
 	border-width: 1px 0 1px 1px;
 	line-height: 2.52;
 	margin: 0;
 }
 .widget_calendar #wp-calendar caption {
-	color: #fff;
+	color: #262626;
 	letter-spacing: 0.1em;
 	line-height: 1.2142857142;
 	margin-bottom: 17px;
@@ -1410,7 +1419,7 @@ object {
 }
 .widget_calendar #wp-calendar thead th,
 .widget_calendar #wp-calendar tbody td {
-	border: 1px solid rgba(255, 255, 255, 0.2);
+	border: 1px solid #ccc;
 	border-width: 0 1px 1px 0;
 	text-align: center;
 }
@@ -1418,7 +1427,7 @@ object {
 	padding-left: 5px;
 }
 .widget_calendar #wp-calendar tfoot td#next {
-	border-right: 1px solid rgba(255, 255, 255, 0.2);
+	border-right: 1px solid #ccc;
 	padding-right: 5px;
 	text-align: right;
 }
