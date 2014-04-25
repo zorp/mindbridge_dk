@@ -9,7 +9,7 @@ class ITSEC_File_Change_Admin {
 		$module_path,
 		$module_path_relative;
 
-	function __construct( $core, $module ) {
+	function run( $core, $module ) {
 
 		if ( is_admin() ) {
 
@@ -58,19 +58,19 @@ class ITSEC_File_Change_Admin {
 
 		global $itsec_globals;
 
-		wp_enqueue_script( 'itsec_file_change_warning_js', $this->module_path . 'js/admin-file-change-warning.js', 'jquery', $itsec_globals['plugin_build'] );
+		wp_enqueue_script( 'itsec_file_change_warning_js', $this->module_path . 'js/admin-file-change-warning.js', array( 'jquery' ), $itsec_globals['plugin_build'] );
 		wp_localize_script(
 			'itsec_file_change_warning_js',
 			'itsec_file_change_warning',
 			array(
 				'nonce' => wp_create_nonce( 'itsec_file_change_warning' ),
-				'url' => admin_url() . 'admin.php?page=toplevel_page_itsec_logs',
+				'url'   => admin_url() . 'admin.php?page=toplevel_page_itsec_logs',
 			)
 		);
 
 		if ( isset( get_current_screen()->id ) && ( strpos( get_current_screen()->id, 'security_page_toplevel_page_itsec_settings' ) !== false || strpos( get_current_screen()->id, 'security_page_toplevel_page_itsec_logs' ) !== false ) ) {
 
-			wp_enqueue_script( 'itsec_file_change_js', $this->module_path . 'js/admin-file-change.js', 'jquery', $itsec_globals['plugin_build'] );
+			wp_enqueue_script( 'itsec_file_change_js', $this->module_path . 'js/admin-file-change.js', array( 'jquery' ), $itsec_globals['plugin_build'] );
 			wp_localize_script(
 				'itsec_file_change_js',
 				'itsec_file_change',
@@ -88,7 +88,7 @@ class ITSEC_File_Change_Admin {
 				)
 			);
 
-			wp_enqueue_script( 'itsec_jquery_filetree', $this->module_path . 'filetree/jqueryFileTree.js', 'jquery', '1.01' );
+			wp_enqueue_script( 'itsec_jquery_filetree', $this->module_path . 'filetree/jqueryFileTree.js', array( 'jquery' ), '1.01' );
 			wp_localize_script(
 				'itsec_jquery_filetree',
 				'itsec_jquery_filetree',
@@ -738,7 +738,7 @@ class ITSEC_File_Change_Admin {
 		$input['method']       = ( isset( $input['method'] ) && intval( $input['method'] == 1 ) ? true : false );
 		$input['email']        = ( isset( $input['email'] ) && intval( $input['email'] == 1 ) ? true : false );
 		$input['notify_admin'] = ( isset( $input['notify_admin'] ) && intval( $input['notify_admin'] == 1 ) ? true : false );
-		$input['last_chunk'] = ( isset( $input['last_chunk'] ) ? $input['last_chunk'] : false );
+		$input['last_chunk']   = ( isset( $input['last_chunk'] ) ? $input['last_chunk'] : false );
 
 		if ( ! is_array( $input['file_list'] ) ) {
 			$file_list = explode( PHP_EOL, $input['file_list'] );
@@ -764,9 +764,15 @@ class ITSEC_File_Change_Admin {
 
 		foreach ( $file_types as $file_type ) {
 
-			$good_type = sanitize_text_field( '.' . str_replace( '.', '', $file_type ) );
+			$file_type = trim( $file_type );
 
-			$good_types[] = sanitize_text_field( trim( $good_type ) );
+			if ( strlen( $file_type ) > 0 && $file_type != '.' ) {
+
+				$good_type = sanitize_text_field( '.' . str_replace( '.', '', $file_type ) );
+
+				$good_types[] = sanitize_text_field( trim( $good_type ) );
+
+			}
 		}
 
 		$input['types'] = $good_types;
