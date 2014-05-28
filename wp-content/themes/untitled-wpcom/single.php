@@ -8,6 +8,7 @@
 $mini_query = new WP_Query( array(
 	'posts_per_page' => 18,
 	'post__not_in'	 =>	array( get_the_ID() ),
+	'meta_query'     => array( array( 'key' => '_thumbnail_id' ) ),
 ) );
 
 
