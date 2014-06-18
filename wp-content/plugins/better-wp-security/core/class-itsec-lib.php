@@ -193,13 +193,16 @@ final class ITSEC_Lib {
 	 *
 	 * Returns primary domain name (without subdomains) of given URL
 	 *
-	 * @param string  $address address to filter
-	 * @param boolean $apache  [true] does this require an apache style wildcard
+	 * @since 4.0
+	 *
+	 * @param string $address  address to filter
+	 * @param bool   $apache   [true] does this require an apache style wildcard
+	 * @param bool   $wildcard false if a wildcard shouldn't be included at all
 	 *
 	 * @return string domain name
 	 *
 	 * */
-	public static function get_domain( $address, $apache = true ) {
+	public static function get_domain( $address, $apache = true, $wildcard = true ) {
 
 		preg_match( "/^(http:\/\/)?([^\/]+)/i", $address, $matches );
 
@@ -207,10 +210,22 @@ final class ITSEC_Lib {
 
 		preg_match( "/[^\.\/]+\.[^\.\/]+$/", $host, $matches );
 
-		if ( $apache == true ) {
-			$wc = '(.*)';
+		if ( $wildcard === true ) {
+
+			if ( $apache === true ) {
+
+				$wc = '(.*)';
+
+			} else {
+
+				$wc = '*.';
+
+			}
+
 		} else {
-			$wc = '*.';
+
+			$wc = '';
+
 		}
 
 		if ( ! is_array( $matches ) ) {
@@ -358,43 +373,43 @@ final class ITSEC_Lib {
 	}
 
 	/**
-	 * Returns the URI path of the current module
+	 * Returns the URL of the current module
 	 *
 	 * @since 4.0
 	 *
 	 * @param string $file     the module file from which to derive the path
-	 * @param bool   $with_sub include the subdirectory if needed
 	 *
 	 * @return string the path of the current module
 	 */
-	public static function get_module_path( $file, $with_sub = false ) {
+	public static function get_module_path( $file ) {
 
-		$directory = dirname( $file );
+		global $itsec_globals;
 
-		$path_info = parse_url( get_bloginfo( 'url' ) );
+		$path = str_replace( $itsec_globals['plugin_dir'], '', dirname( $file ) );
 
-		$path = trailingslashit( '/' . ltrim( str_replace( '\\', '/', str_replace( rtrim( ABSPATH, '\\\/' ), '', $directory ) ), '\\\/' ) );
-
-		if ( $with_sub === true && isset( $path_info['path'] ) ) {
-
-			$path = $path_info['path'] . $path;
-
-		}
-
-		return $path;
+		return trailingslashit( $itsec_globals['plugin_url'] . $path );
 
 	}
 
 	/**
 	 * Returns a psuedo-random string of requested length.
 	 *
-	 * @param int $length how long the string should be (max 62)
+	 * @param int  $length how long the string should be (max 62)
+	 * @param bool $base32 true if use only base32 characters to generate
 	 *
 	 * @return string
 	 */
-	public static function get_random( $length ) {
+	public static function get_random( $length, $base32 = false ) {
 
-		$string = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+		if ( $base32 === true ) {
+
+			$string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+
+		} else {
+
+			$string = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+
+		}
 
 		return substr( str_shuffle( $string ), mt_rand( 0, strlen( $string ) - $length ), $length );
 
@@ -406,6 +421,11 @@ final class ITSEC_Lib {
 	 * @return string|bool server type the user is using of false if undetectable.
 	 */
 	public static function get_server() {
+
+		//Allows to override server authentication for testing or other reasons.
+		if ( defined( 'ITSEC_SERVER_OVERRIDE' ) ) {
+			return ITSEC_SERVER_OVERRIDE;
+		}
 
 		$server_raw = strtolower( filter_var( $_SERVER['SERVER_SOFTWARE'], FILTER_SANITIZE_STRING ) );
 

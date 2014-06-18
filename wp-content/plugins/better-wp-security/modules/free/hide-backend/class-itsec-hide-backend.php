@@ -21,6 +21,7 @@ class ITSEC_Hide_Backend {
 			add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ) );
 
 			add_filter( 'body_class', array( $this, 'remove_admin_bar' ) );
+			add_filter( 'loginout', array( $this, 'filter_loginout' ) );
 			add_filter( 'wp_redirect', array( $this, 'filter_login_url' ), 10, 2 );
 			add_filter( 'site_url', array( $this, 'filter_login_url' ), 10, 2 );
 			add_filter( 'retrieve_password_message', array( $this, 'retrieve_password_message' ) );
@@ -67,12 +68,12 @@ class ITSEC_Hide_Backend {
 				(
 					get_site_option( 'users_can_register' ) == false &&
 					(
-						isset( $_SERVER['REQUEST_URI'] ) && $_SERVER['REQUEST_URI'] == ITSEC_Lib::get_home_root() . 'wp-register.php' ||
-						isset( $_SERVER['REQUEST_URI'] ) && $_SERVER['REQUEST_URI'] == ITSEC_Lib::get_home_root() . 'wp-signup.php'
+						isset( $_SERVER['REQUEST_URI'] ) && strpos( $_SERVER['REQUEST_URI'], 'wp-register.php' ) ||
+						isset( $_SERVER['REQUEST_URI'] ) && strpos( $_SERVER['REQUEST_URI'], 'wp-signup.php' )
 					)
 				) ||
 				(
-					isset( $_SERVER['REQUEST_URI'] ) && $_SERVER['REQUEST_URI'] == ITSEC_Lib::get_home_root() . 'wp-login.php' && is_user_logged_in() !== true
+					isset( $_SERVER['REQUEST_URI'] ) && strpos( $_SERVER['REQUEST_URI'], 'wp-login.php' ) && is_user_logged_in() !== true
 				) ||
 				( is_admin() && is_user_logged_in() !== true ) ||
 				(
@@ -201,6 +202,8 @@ class ITSEC_Hide_Backend {
 	/**
 	 * Filters redirects for correct login URL
 	 *
+	 * @since 4.0
+	 *
 	 * @param  string $url URL redirecting to
 	 *
 	 * @return string       Correct redirect URL
@@ -208,6 +211,22 @@ class ITSEC_Hide_Backend {
 	public function filter_login_url( $url ) {
 
 		return str_replace( 'wp-login.php', $this->settings['slug'], $url );
+
+
+	}
+
+	/**
+	 * Filter meta link
+	 *
+	 * @since 4.2
+	 *
+	 * @param string $link the link
+	 *
+	 * @return string the link
+	 */
+	public function filter_loginout( $link ) {
+
+		return str_replace( 'wp-login.php', $this->settings['slug'], $link );
 
 	}
 
@@ -240,7 +259,7 @@ class ITSEC_Hide_Backend {
 	 *
 	 * @return array          body tag classes
 	 */
-	function remove_admin_bar( $classes ) {
+	public function remove_admin_bar( $classes ) {
 
 		if ( is_admin() && is_user_logged_in() !== true ) {
 

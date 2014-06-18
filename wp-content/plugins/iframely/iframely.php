@@ -4,7 +4,7 @@ Plugin Name: Iframely
 Plugin URI: http://wordpress.org/plugins/iframely/
 Description: Iframely for WordPress. Embed anything, with responsive widgets.
 Author: Itteco Corp.
-Version: 0.2.2
+Version: 0.2.3
 Author URI: http://iframe.ly/?from=wp
 */
 
@@ -117,7 +117,7 @@ add_action( 'network_admin_menu', 'iframely_network_admin_create_menu' );
 
 # Create link to plugin options page from plugins list
 function iframely_plugin_add_settings_link( $links ) {
-    $settings_link = '<a href="admin.php?page=iframely/iframely.php">Settings</a>';
+    $settings_link = '<a href="admin.php?page=iframely_settings_page">Settings</a>';
   	array_push( $links, $settings_link );
   	return $links;
 }
@@ -155,7 +155,7 @@ function iframely_settings_page() {
 
 <h1>How to use Iframely</h1>
 
-<p>Iframely will take URL in your post and replace it with (responsive, if possible) embed code. We cover well over 1000 domains. <a href="http://iframe.ly/domains" target="_blank">See examples</a>.</p>
+<p>Iframely will take URL in your post and replace it with (responsive, if possible) embed code. We cover well over 1000 domains. <a href="http://iframely.com/domains" target="_blank">See examples</a>.</p>
 
 <ul>
 <li><p><strong>URL on a separate line</strong>: Shorten your URL first at <a href="http://iframe.ly?from=wp" target="_blank">iframe.ly</a> <br>and paste short URL on a separate line in your post</p></li>
@@ -197,8 +197,8 @@ function iframely_settings_page() {
         
         <li>
             <p><input type="checkbox" name="iframely_host_widgets" value="1" <?php if (get_site_option('iframely_host_widgets')) { ?> checked="checked" <?php } ?> /> Host and Proxy Embed Widgets</p>
-            <p>This <em>isn't implemented yet</em>. But put a check to let us know you would be interested in this feature.</br>
-            For performance/load times, SSL or even autoplay videos, we could wrap native embed codes and proxy widget views through our servers.</p>
+            <p>This will make all embeds be wrapped and served from Iframely hosts. </br>
+            It resolves autoplay videos issues, "Flash players on iOS", as well as improves performance/load times and facilitates SSL.</p>
         </li>
         
     </ul>

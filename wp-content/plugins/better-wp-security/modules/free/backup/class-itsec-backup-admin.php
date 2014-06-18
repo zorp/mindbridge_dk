@@ -4,14 +4,12 @@ class ITSEC_Backup_Admin {
 
 	private
 		$core,
-		$module,
 		$module_path,
 		$settings;
 
-	function run( $core, $module ) {
+	function run( $core ) {
 
 		$this->core        = $core;
-		$this->module      = $module;
 		$this->settings    = get_site_option( 'itsec_backup' );
 		$this->module_path = ITSEC_Lib::get_module_path( __FILE__ );
 
@@ -138,7 +136,8 @@ class ITSEC_Backup_Admin {
 			wp_enqueue_style( 'itsec_backup_styles' );
 
 			wp_localize_script( 'itsec_backup_js', 'exclude_text', array(
-				'available' => __( 'Tables for Backup', 'it-l10n-better-wp-security' ), 'excluded' => __( 'Excluded Tables', 'it-l10n-better-wp-security' )
+				'available' => __( 'Tables for Backup', 'it-l10n-better-wp-security' ), 'excluded' => __( 'Excluded Tables', 'it-l10n-better-wp-security' ),
+				'location' => $itsec_globals['ithemes_backup_dir'],
 			) );
 
 		}
@@ -183,6 +182,13 @@ class ITSEC_Backup_Admin {
 
 		if ( class_exists( 'backupbuddy_api' ) && sizeof( backupbuddy_api::getSchedules() ) >= 1 ) {
 
+			if ( $this->settings['enabled'] === true ) { //disable our backups if we have to
+
+				$this->settings['enabled'] = false;
+				update_site_option( 'itsec_backup', $this->settings );
+
+			}
+
 			$status_array = 'safe-medium';
 			$status       = array(
 				'text' => __( 'Your site is performing scheduled database and file backups.', 'it-l10n-better-wp-security' ),
@@ -190,6 +196,13 @@ class ITSEC_Backup_Admin {
 			);
 
 		} elseif ( class_exists( 'backupbuddy_api' ) ) {
+
+			if ( $this->settings['enabled'] === true ) { //disable our backups if we have to
+
+				$this->settings['enabled'] = false;
+				update_site_option( 'itsec_backup', $this->settings );
+
+			}
 
 			$status_array = 'medium';
 			$status       = array(
@@ -199,6 +212,13 @@ class ITSEC_Backup_Admin {
 
 		} elseif ( $this->has_backup() === true && $this->scheduled_backup() === true ) {
 
+			if ( $this->settings['enabled'] === true ) { //disable our backups if we have to
+
+				$this->settings['enabled'] = false;
+				update_site_option( 'itsec_backup', $this->settings );
+
+			}
+
 			$status_array = 'safe-medium';
 			$status       = array(
 				'text' => __( 'You are using a 3rd party backup solution.', 'it-l10n-better-wp-security' ),
@@ -206,6 +226,13 @@ class ITSEC_Backup_Admin {
 			);
 
 		} elseif ( $this->has_backup() === true ) {
+
+			if ( $this->settings['enabled'] === true ) { //disable our backups if we have to
+
+				$this->settings['enabled'] = false;
+				update_site_option( 'itsec_backup', $this->settings );
+
+			}
 
 			$status_array = 'medium';
 			$status       = array(
@@ -329,9 +356,9 @@ class ITSEC_Backup_Admin {
 
 	public function scheduled_backup() {
 
-		$has_backup = false;
+		$sceduled_backup = false;
 
-		return apply_filters( 'itsec_scheduled_external_backup', $has_backup );
+		return apply_filters( 'itsec_scheduled_external_backup', $sceduled_backup );
 
 	}
 
@@ -486,11 +513,11 @@ class ITSEC_Backup_Admin {
 			$location = $itsec_globals['ithemes_backup_dir'];
 		}
 
-		$content = '<input class="large-text" name="itsec_backup[location]" id="itsec_backup_location" value="' . $location . '" type="text">';
-		$content .= '<label for="itsec_backup_location"> ' . __( 'The path on your machine where backup files should be stored.', 'it-l10n-better-wp-security' ) . '</label>';
-		$content .= '<p class="description"> ' . __( 'This path must be writable by your website. For added security, it is recommended you do not include it in your website root folder.', 'it-l10n-better-wp-security' ) . '</p>';
+		echo '<input class="large-text" name="itsec_backup[location]" id="itsec_backup_location" value="' . $location . '" type="text">';
+		echo '<label for="itsec_backup_location"> ' . __( 'The path on your machine where backup files should be stored.', 'it-l10n-better-wp-security' ) . '</label>';
+		echo '<p class="description"> ' . __( 'This path must be writable by your website. For added security, it is recommended you do not include it in your website root folder.', 'it-l10n-better-wp-security' ) . '</p>';
+		echo '<input id="itsec_reset_backup_location" class="button-secondary" name="itsec_reset_backup_location" type="button" value="' . __( 'Restore Default Location', 'it-l10n-better-wp-security' ) . '" />' . PHP_EOL;
 
-		echo $content;
 
 	}
 
@@ -596,7 +623,13 @@ class ITSEC_Backup_Admin {
 			die( __( 'Security error!', 'it-l10n-better-wp-security' ) );
 		}
 
-		$this->module->do_backup( true );
+		if ( ! class_exists( 'ITSEC_Backup' ) ) {
+			require( dirname( __FILE__) . '/class-itsec-backup.php' );
+		}
+
+		$module = new ITSEC_Backup();
+		$module->run( $this->core );
+		$module->do_backup( true );
 
 	}
 
@@ -736,7 +769,13 @@ class ITSEC_Backup_Admin {
 	 */
 	public function tooltip_ajax() {
 
-		$result = $this->module->do_backup( true );
+		if ( ! class_exists( 'ITSEC_Backup' ) ) {
+			require( dirname( __FILE__) . '/class-itsec-backup.php' );
+		}
+
+		$module = new ITSEC_Backup();
+		$module->run( $this->core );
+		$result = $module->do_backup( true );
 
 		if ( $result === true ) {
 			die( 'true' );
