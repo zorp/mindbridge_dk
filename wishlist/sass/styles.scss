@@ -1,0 +1,97 @@
+@import "compass";
+@import "compass/reset";
+
+@import url(http://fonts.googleapis.com/css?family=Sintony:400,700);
+
+body {
+  font-family: 'Sintony', sans-serif;
+  font-size: 12px;
+}
+
+h1 {
+  font-size: 300%;
+  margin-bottom: 20px;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+a {
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    color: #000;
+    text-decoration: none;
+  }
+
+  &:hover {
+    background-color: #000;
+    color: #fff;
+  }
+}
+
+.spacing {
+  height: 20px;
+}
+
+.container {
+  @include box-sizing(border-box);
+
+  width: 100%;
+  padding: 40px;
+  padding-right: 20px;
+}
+
+.grid-item {
+  position: relative;
+  max-width: 200px;
+  float: left;
+  margin-right: 40px;
+  margin-bottom: 20px;
+
+  .overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 202px;
+    height: 100%;
+    background-color: transparentize(red,0.2);
+  }
+
+  .item-img-wrapper {
+    width: 200px;
+    height: 150px;
+    overflow: hidden;
+    vertical-align: bottom;
+    margin-bottom: 10px;
+    border: 1px solid lightgrey;
+  }
+  
+  .item-img {
+    width: 100%;
+  }
+
+  .item-title {
+    font-size: 150%;
+    margin-bottom: 10px;
+  }
+
+  .item-description {
+    min-height: 25px;
+    margin-bottom: 5px;
+  }
+
+  .item-meta {
+    .item {
+      display: list-item;
+      margin-bottom: 4px;
+
+      i:before {
+        padding-right: 4px;
+        font-size: 120%;
+      }
+    }
+  }
+}

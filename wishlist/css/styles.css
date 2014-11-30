@@ -1,0 +1,159 @@
+@import url(http://fonts.googleapis.com/css?family=Sintony:400,700);
+/* line 17, ../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 6, ../sass/styles.scss */
+body {
+  font-family: 'Sintony', sans-serif;
+  font-size: 12px;
+}
+
+/* line 11, ../sass/styles.scss */
+h1 {
+  font-size: 300%;
+  margin-bottom: 20px;
+}
+
+/* line 16, ../sass/styles.scss */
+p {
+  margin-bottom: 10px;
+}
+
+/* line 24, ../sass/styles.scss */
+a:link, a:visited, a:hover, a:active {
+  color: #000;
+  text-decoration: none;
+}
+/* line 29, ../sass/styles.scss */
+a:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+/* line 35, ../sass/styles.scss */
+.spacing {
+  height: 20px;
+}
+
+/* line 39, ../sass/styles.scss */
+.container {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 40px;
+  padding-right: 20px;
+}
+
+/* line 47, ../sass/styles.scss */
+.grid-item {
+  position: relative;
+  max-width: 200px;
+  float: left;
+  margin-right: 40px;
+  margin-bottom: 20px;
+}
+/* line 54, ../sass/styles.scss */
+.grid-item .overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 202px;
+  height: 100%;
+  background-color: rgba(255, 0, 0, 0.8);
+}
+/* line 63, ../sass/styles.scss */
+.grid-item .item-img-wrapper {
+  width: 200px;
+  height: 150px;
+  overflow: hidden;
+  vertical-align: bottom;
+  margin-bottom: 10px;
+  border: 1px solid lightgrey;
+}
+/* line 72, ../sass/styles.scss */
+.grid-item .item-img {
+  width: 100%;
+}
+/* line 76, ../sass/styles.scss */
+.grid-item .item-title {
+  font-size: 150%;
+  margin-bottom: 10px;
+}
+/* line 81, ../sass/styles.scss */
+.grid-item .item-description {
+  min-height: 25px;
+  margin-bottom: 5px;
+}
+/* line 87, ../sass/styles.scss */
+.grid-item .item-meta .item {
+  display: list-item;
+  margin-bottom: 4px;
+}
+/* line 91, ../sass/styles.scss */
+.grid-item .item-meta .item i:before {
+  padding-right: 4px;
+  font-size: 120%;
+}
