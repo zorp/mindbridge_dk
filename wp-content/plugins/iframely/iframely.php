@@ -4,8 +4,8 @@ Plugin Name: Iframely
 Plugin URI: http://wordpress.org/plugins/iframely/
 Description: Iframely for WordPress. Embed anything, with responsive widgets.
 Author: Itteco Corp.
-Version: 0.2.3
-Author URI: http://iframe.ly/?from=wp
+Version: 0.2.5
+Author URI: https://iframely.com/?from=wp
 */
 
 # Define iframely plugin path
@@ -13,31 +13,27 @@ if ( !defined( 'IFRAMELY_URL' ) ) {
   define( 'IFRAMELY_URL', WP_PLUGIN_URL.'/iframely' );
 }
 
-# Add iframely as oembed provider for ANY link on line, if we have API key and this option is not disabled
-if ( !get_site_option( 'iframely_only_shortcode' ) && get_site_option('iframely_api_key') ) {
+# Always add Iframely as provider. Last to the list. If not 'only_shortcode', then this provider will disable all default ones
 
-    # Disable all active oembed providers
-    add_filter( 'oembed_providers', create_function('', 'return array();'));
+# Add iframely as oembed provider for ANY url, yes it will process any url on separate line with wp oembed functions
+ wp_oembed_add_provider( '#https?://[^\s]+#i', iframely_create_api_link(), true );
 
-    # Also disable default providers list
-    require_once( ABSPATH . WPINC . '/class-oembed.php' );
-    $wp_oembed = _wp_oembed_get_object();
-    $wp_oembed->providers = array();
+# Make the Iframely endpoint to be the first in queue, otherwise default regexp are precedent
+add_filter( 'oembed_providers', 'maybe_reverse_oembed_providers');
 
-    # Add iframely as oembed provider for ANY url, yes it will process any url on separate line with wp oembed functions
-    wp_oembed_add_provider( '#https?://[^\s]+#i', iframely_create_api_link(), true );
-}
-
-# Add iframely as oembed provider for any iframe.ly shorten link
+# Always add iframely as oembed provider for any iframe.ly short link
 wp_oembed_add_provider( '#https?://iframe\.ly/.+#i', iframely_create_api_link(), true );
 
-# Enqueue iframely and jquery js for front-end
-function registering_iframely_js() {
-	wp_register_script( 'iframely_js', IFRAMELY_URL . '/js/iframely.js', array('jquery'), '0.5.2' );
-	wp_enqueue_script( 'iframely_js' );
-}
+function maybe_reverse_oembed_providers ($providers) {
 
-add_action( 'wp_enqueue_scripts', 'registering_iframely_js');
+    # iframely_only_shortcode option is unset in shortcode, so that the filter can work. Then returned back.
+    if ( !get_site_option( 'iframely_only_shortcode' ) ) {
+        return array_reverse($providers);
+    }
+    else {
+        return $providers;
+    }
+}
 
 # Register [iframely] shortcode
 add_shortcode( 'iframely', 'embed_iframely' );
@@ -50,37 +46,24 @@ function embed_iframely( $atts, $content = '' ) {
     $content = str_replace( '&#038;', '&amp;', trim( $content ) );
     $content = str_replace( '&amp;', '&', $content );
 
-    # Read iframely API key from options
-    $api_key = trim( get_site_option( 'iframely_api_key' ) );
-
-    # Print error message if API key is empty and not an iframe.ly shorten url inside shortcode
-    if ( empty( $api_key ) && !preg_match( '#https?://iframe\.ly/.+#i', $content ) ) {
-        return '[Please, configure your <a href="http://iframe.ly/api">API key</a> in Iframely options or manually shorten URL at <a href="http://iframe.ly">iframe.ly</a>]';
-    }
-
-    # Create internal wp oembed class to get list of oembed providers
-    $wp_oembed = _wp_oembed_get_object();
-
-    # Save current providers
-    $old_providers = $wp_oembed->providers;
-
-    # With API key we can use iframely as provider for any url inside our shortcode
-    if ( !empty( $api_key ) ) {
-        $wp_oembed->providers = array( '#https?://[^\s]+#i' => array( iframely_create_api_link(), true ) );
-    }
-    # Without API key we can use iframely as provider only for iframe.ly shorten link
-    else {
-        $wp_oembed->providers = array( '#https?://iframe\.ly/.+#i' => array( iframely_create_api_link(), true ) );
-    }
-
     # Get global WP_Embed class, to use 'shortcode' method from it
     global $wp_embed;
+
+    # With API key we can use iframely as provider for any url inside our shortcode
+    # Add handler, if it wasn't added before
+    $only_shortcode_before = get_site_option( 'iframely_only_shortcode' );
+
+    if ($only_shortcode_before) {
+        iframely_update_option('iframely_only_shortcode', null);
+    }
 
     # Get embed code for the url using internal wp embed object (it cache results for the post automatically)
     $code = $wp_embed->shortcode( $atts, $content );
 
-    # Set list of the original oembed providers back
-    $wp_oembed->providers = $old_providers;
+    # return only_shortcode option to what it was before
+    if ($only_shortcode_before) {
+        iframely_update_option('iframely_only_shortcode', $only_shortcode_before);
+    }
 
     # Return code to embed for the url inside shortcode
     return $code;
@@ -91,21 +74,14 @@ function iframely_create_api_link () {
 
     # Read url of the current blog
     $blog_name = preg_replace( '#^https?://#i', '', get_bloginfo( 'url' ) );
-    # Read Host Widgets from plugin options
-    $host_widgets = get_site_option( 'iframely_host_widgets' );
     # Read API key from plugin options
     $api_key = trim( get_site_option( 'iframely_api_key' ) );
 
-    $link = 'http://iframe.ly/api/oembed?&origin=' . $blog_name;
+    $link = $api_key ? 'http://iframe.ly/api/oembed?&origin=' . $blog_name : 'http://open.iframe.ly/api/oembed?&origin=' . $blog_name;
 
     # Append API key
     if ( $api_key ) {
         $link .= '&api_key=' . $api_key;
-    }
-
-    # Append Host Widgets
-    if ( $host_widgets ) {
-        $link .= '&iframe=' . 1;
     }
 
     return $link;
@@ -118,8 +94,8 @@ add_action( 'network_admin_menu', 'iframely_network_admin_create_menu' );
 # Create link to plugin options page from plugins list
 function iframely_plugin_add_settings_link( $links ) {
     $settings_link = '<a href="admin.php?page=iframely_settings_page">Settings</a>';
-  	array_push( $links, $settings_link );
-  	return $links;
+    array_push( $links, $settings_link );
+    return $links;
 }
 
 $iframely_plugin_basename = plugin_basename( __FILE__ );
@@ -155,12 +131,11 @@ function iframely_settings_page() {
 
 <h1>How to use Iframely</h1>
 
-<p>Iframely will take URL in your post and replace it with (responsive, if possible) embed code. We cover well over 1000 domains. <a href="http://iframely.com/domains" target="_blank">See examples</a>.</p>
+<p>Iframely will take URL in your post and replace it with (responsive, if possible) embed code. We cover well over 1600 domains. Plus summary cards for other URLs. <a href="https://iframely.com/try" target="_blank">See examples</a>.</p>
 
 <ul>
-<li><p><strong>URL on a separate line</strong>: Shorten your URL first at <a href="http://iframe.ly?from=wp" target="_blank">iframe.ly</a> <br>and paste short URL on a separate line in your post</p></li>
-<li><p><strong>With shortcode</strong>: <code>[iframely]http://iframe.ly/bFkV[/iframely]</code> <br>or <code>[iframely url=http://iframe.ly/bFkV/]</code></p></li>
-<li><p><strong>With API Key - any URL</strong>: URL on a separate line and also with shortcode, but with any URL <br>and with no need to shorten URLs manually at iframe.ly first. <br>This option requires (FREE) <a href="http://iframe.ly/api" target="_blank"</a><strong>API KEY</strong></a> </p></li>
+<li><p><strong>URL on a separate line</strong></p></li>
+<li><p><strong>With shortcode</strong>: <code>[iframely]http://iframe.ly/bFkV[/iframely]</code></p></li>
 </ul>
 
 
@@ -175,8 +150,8 @@ function iframely_settings_page() {
         if (isset($_POST['_wpnonce']) && isset($_POST['submit'])) {
 
             iframely_update_option('iframely_api_key', trim($_POST['iframely_api_key']));
-            iframely_update_option('iframely_only_shortcode', (int)$_POST['iframely_only_shortcode']);
-            iframely_update_option('iframely_host_widgets', (int)$_POST['iframely_host_widgets']);
+            iframely_update_option('iframely_only_shortcode', (isset($_POST['iframely_only_shortcode'])) ? (int)$_POST['iframely_only_shortcode'] : null);
+
         }
 
         wp_nonce_field('form-settings');
@@ -184,23 +159,18 @@ function iframely_settings_page() {
 
     <ul>
         <li>
-            <p>Your Iframely API Key: </p>
+            <p>Your <strong>optional</strong> Iframely API Key: </p>
             <p><input type="text" style="width: 250px;" name="iframely_api_key" value="<?php echo get_site_option('iframely_api_key'); ?>" /></p>
-            <p> It activates all URLs both in shortcode and when used on a separate line. When left empty, <a href="http://iframe.ly?from=wp">Shorten URL</a> manually first.</br>
-            Get your <a href="http://iframe.ly/api" target="_blank">FREE API key here</a>.</p>
+            <p> Again: it is <strong>optional</strong>. If you have an account with us though, you'll be able to use our hosted iFrames beyond summary cards. Also, you'd get to configure your APIs. </br>
+            You can get your <a href="https://iframely.com/signup" target="_blank">API key here</a>. Or just leave it empty.</p>
         </li>
 
         <li>
-            <p><input type="checkbox" name="iframely_only_shortcode" value="1" <?php if (get_site_option('iframely_only_shortcode')) { ?> checked="checked" <?php } ?> /> Only use Iframely with <code>[iframely]</code> shortcode</p>
-            <p>It will block Iframely from intercepting all URLs in your editor that may be covered by other embeds plugins you have installed, e.g. a Jetpack.</p>
+            <p><input type="checkbox" name="iframely_only_shortcode" value="1" <?php if (get_site_option('iframely_only_shortcode')) { ?> checked="checked" <?php } ?> /> Do not override default embed providers</p>
+            <p>It will block Iframely from intercepting all URLs in your editor that may be covered by other embeds plugins you have installed, e.g. a Jetpack. or default embeds supported by WordPress.</p>
+            <p>Although, we should support the same providers and output the same code, just make it responsive.</p>
         </li>
-        
-        <li>
-            <p><input type="checkbox" name="iframely_host_widgets" value="1" <?php if (get_site_option('iframely_host_widgets')) { ?> checked="checked" <?php } ?> /> Host and Proxy Embed Widgets</p>
-            <p>This will make all embeds be wrapped and served from Iframely hosts. </br>
-            It resolves autoplay videos issues, "Flash players on iOS", as well as improves performance/load times and facilitates SSL.</p>
-        </li>
-        
+                
     </ul>
     
     <?php submit_button(); ?>
