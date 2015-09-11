@@ -1,11 +1,11 @@
 /*
 Theme Name: Untitled
-Theme URI: http://theme.wordpress.com/themes/untitled/
+Theme URI: https://wordpress.com/themes/untitled/
 Description: A nice bold theme. Features full-bleed featured posts and featured images, a fixed header, and subtle CSS3 transitions.
-Version: 1.1.3
+Version: 1.1.4
 Author: Automattic
-Author URI: http://theme.wordpress.com/
-License: GPL v2 or later
+Author URI: https://wordpress.com/themes/
+License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
@@ -592,7 +592,8 @@ body.page-template-page-full-width-php.widget-area .site-content{
 }
 .main-navigation ul ul a:hover {
 }
-.main-navigation ul li:hover > ul {
+.main-navigation ul li:hover > ul,
+.main-navigation ul li.focus > ul {
 	display: block;
 }
 .main-navigation li.current_page_item a,
