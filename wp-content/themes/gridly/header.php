@@ -5,7 +5,7 @@
     <html <?php language_attributes();?>> 
 	<meta charset="<?php bloginfo('charset'); ?>" />
 	<title><?php bloginfo('sitename'); ?> <?php wp_title(); ?></title>
-	<meta name="description" content="<?php bloginfo('description'); ?>"/>
+	
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
     
     <!-- styles -->
