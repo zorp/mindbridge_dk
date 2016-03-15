@@ -1,0 +1,336 @@
+0000.001 (0) Opened log file at time: Fri, 11 Mar 2016 20:37:28 +0000 on http://mindbridge.dk
+0000.003 (0) UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.11.23 WP: 4.4.2 PHP: 5.4.45-1~dotdeb+7.1 (Linux localhost 4.4.0-x86_64-linode63 #2 SMP Tue Jan 19 12:43:53 EST 2016 x86_64) MySQL: 5.6.19 Server: Apache safe_mode: 0 max_execution_time: 900 memory_limit: 512M (used: 32.3M | 33M) multisite: N mcrypt: Y LANG: C ZipArchive::addFile: Y
+0000.004 (0) Free space on disk containing Updraft's temporary directory: 33585.4 Mb
+0000.007 (0) Tasks: Backup files: 1 (schedule: daily) Backup DB:  (schedule: daily)
+0000.008 (0) Processed schedules. Tasks now: Backup files: 1 Backup DB: 1
+0000.016 (0) Requesting semaphore lock (fd)
+0000.021 (0) Set semaphore last lock (fd) time to 2016-03-11 20:37:28
+0000.022 (0) Semaphore lock (fd) complete
+0000.028 (0) Backup run: resumption=0, nonce=643bd845a408, begun at=1457728648 (0s ago), job type=backup
+0000.031 (0) Scheduling a resumption (1) after 412 seconds (1457729060) in case this run gets aborted
+0000.043 (0) Checking if we have a zip executable available
+0000.046 (0) Testing: /usr/bin/zip
+0000.054 (0) Output: zip warning: binziptest/test.zip not found or empty
+0000.058 (0) Output: adding: binziptest/subdir1/	(in=0) (out=0) (stored 0%)
+0000.060 (0) Output: adding: binziptest/subdir1/subdir2/	(in=0) (out=0) (stored 0%)
+0000.062 (0) Output: adding: binziptest/subdir1/subdir2/test.html	(in=128) (out=105) (deflated 18%)
+0000.064 (0) Output: total bytes=128, compressed=105 -> 18% savings
+0000.072 (0) Output: adding: binziptest/subdir1/subdir2/test2.html	(in=135) (out=111) (deflated 18%)
+0000.076 (0) Output: total bytes=263, compressed=216 -> 18% savings
+0000.088 (0) Working binary zip found: /usr/bin/zip
+0000.092 (0) Zip engine: found/will use a binary zip: /usr/bin/zip
+0000.094 (0) Creation of backups of directories: beginning
+0000.099 (0) Beginning creation of dump of plugins (split every: 500 Mb)
+0000.239 (0) Total entities for the zip file: 462 directories, 2775 files (0 skipped as non-modified), 34.8 Mb
+0000.243 (0) Zip: backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip.tmp: 100 files added (on-disk size: 0 Kb)
+0000.246 (0) Zip: backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip.tmp: 200 files added (on-disk size: 0 Kb)
+0000.250 (0) Zip: backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip.tmp: 300 files added (on-disk size: 0 Kb)
+0000.254 (0) Zip: backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip.tmp: 400 files added (on-disk size: 0 Kb)
+0000.257 (0) Zip: backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip.tmp: 500 files added (on-disk size: 0 Kb)
+0000.259 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 500 files added on this batch (1.9 Mb, 2775 files batched, 501 (501) added so far); re-opening (prior size: 0 Kb)
+0000.497 (0) backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip.tmp: size is now: 1.20 Mb
+0000.503 (0) Zip: backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip.tmp: 600 files added (on-disk size: 1214 Kb)
+0000.507 (0) Zip: backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip.tmp: 700 files added (on-disk size: 1214 Kb)
+0000.510 (0) Zip: backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip.tmp: 800 files added (on-disk size: 1214 Kb)
+0000.513 (0) Zip: backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip.tmp: 900 files added (on-disk size: 1214 Kb)
+0000.516 (0) Zip: backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip.tmp: 1000 files added (on-disk size: 1214 Kb)
+0000.517 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 500 files added on this batch (13.8 Mb, 2775 files batched, 501 (1002) added so far); re-opening (prior size: 1214 Kb)
+0001.678 (0) backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip.tmp: size is now: 5.50 Mb
+0001.685 (0) Zip: backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip.tmp: 1100 files added (on-disk size: 5595.1 Kb)
+0001.687 (0) Zip: backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip.tmp: 1200 files added (on-disk size: 5595.1 Kb)
+0001.690 (0) Zip: backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip.tmp: 1300 files added (on-disk size: 5595.1 Kb)
+0001.693 (0) Zip: backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip.tmp: 1400 files added (on-disk size: 5595.1 Kb)
+0001.696 (0) Zip: backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip.tmp: 1500 files added (on-disk size: 5595.1 Kb)
+0001.698 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 500 files added on this batch (7.8 Mb, 2775 files batched, 501 (1503) added so far); re-opening (prior size: 5595.1 Kb)
+0002.306 (0) backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip.tmp: size is now: 8.40 Mb
+0002.313 (0) Zip: backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip.tmp: 1600 files added (on-disk size: 8582.1 Kb)
+0002.316 (0) Zip: backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip.tmp: 1700 files added (on-disk size: 8582.1 Kb)
+0002.319 (0) Zip: backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip.tmp: 1800 files added (on-disk size: 8582.1 Kb)
+0002.322 (0) Zip: backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip.tmp: 1900 files added (on-disk size: 8582.1 Kb)
+0002.325 (0) Zip: backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip.tmp: 2000 files added (on-disk size: 8582.1 Kb)
+0002.327 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 500 files added on this batch (3.2 Mb, 2775 files batched, 501 (2004) added so far); re-opening (prior size: 8582.1 Kb)
+0002.679 (0) Zip: backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip.tmp: 2100 files added (on-disk size: 9855.3 Kb)
+0002.684 (0) Zip: backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip.tmp: 2200 files added (on-disk size: 9855.3 Kb)
+0002.688 (0) Zip: backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip.tmp: 2300 files added (on-disk size: 9855.3 Kb)
+0002.691 (0) Zip: backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip.tmp: 2400 files added (on-disk size: 9855.3 Kb)
+0002.695 (0) Zip: backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip.tmp: 2500 files added (on-disk size: 9855.3 Kb)
+0002.698 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 500 files added on this batch (3.5 Mb, 2775 files batched, 501 (2505) added so far); re-opening (prior size: 9855.3 Kb)
+0003.113 (0) Zip: backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip.tmp: 2600 files added (on-disk size: 11511 Kb)
+0003.116 (0) Zip: backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip.tmp: 2700 files added (on-disk size: 11511 Kb)
+0003.653 (0) Created plugins zip (0) - 13277.1 Kb in 3.6 s (3738.2 Kb/s) (SHA1 checksum: ae9c042cf8ac56805502316a069fa978856acb94)
+0003.659 (0) Beginning creation of dump of themes (split every: 500 Mb)
+0003.695 (0) Total entities for the zip file: 66 directories, 492 files (0 skipped as non-modified), 5.3 Mb
+0003.699 (0) Zip: backup_2016-03-11-2037_Mindbridge_643bd845a408-themes.zip.tmp: 100 files added (on-disk size: 0 Kb)
+0003.703 (0) Zip: backup_2016-03-11-2037_Mindbridge_643bd845a408-themes.zip.tmp: 200 files added (on-disk size: 0 Kb)
+0003.707 (0) Zip: backup_2016-03-11-2037_Mindbridge_643bd845a408-themes.zip.tmp: 300 files added (on-disk size: 0 Kb)
+0003.711 (0) Zip: backup_2016-03-11-2037_Mindbridge_643bd845a408-themes.zip.tmp: 400 files added (on-disk size: 0 Kb)
+0004.043 (0) backup_2016-03-11-2037_Mindbridge_643bd845a408-themes.zip.tmp: size is now: 3.40 Mb
+0004.067 (0) Created themes zip (0) - 3529.4 Kb in 0.4 s (8693.7 Kb/s) (SHA1 checksum: a29c67ec5dbc9e67030d03879e57d73714107438)
+0004.072 (0) Exclusion option setting (uploads): backup*,*backups,backwpup*,wp-clone
+0004.074 (0) Looking for candidates to back up in: /var/www/mindbridge/public_html/wp-content/uploads
+0004.076 (0) finding files: 2012: adding to list (1)
+0004.078 (0) finding files: 2014: adding to list (2)
+0004.080 (0) finding files: 2016: adding to list (3)
+0004.081 (0) finding files: 2011: adding to list (4)
+0004.083 (0) finding files: 2015: adding to list (5)
+0004.085 (0) Beginning creation of dump of uploads (split every: 500 Mb)
+0004.108 (0) Total entities for the zip file: 32 directories, 377 files (0 skipped as non-modified), 41.9 Mb
+0004.113 (0) Zip: backup_2016-03-11-2037_Mindbridge_643bd845a408-uploads.zip.tmp: 100 files added (on-disk size: 0 Kb)
+0004.117 (0) Zip: backup_2016-03-11-2037_Mindbridge_643bd845a408-uploads.zip.tmp: 200 files added (on-disk size: 0 Kb)
+0004.120 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 25 Mb added on this batch (25 Mb, 377 files batched, 248 (248) added so far); re-opening (prior size: 0 Kb)
+0004.369 (0) backup_2016-03-11-2037_Mindbridge_643bd845a408-uploads.zip.tmp: size is now: 25.10 Mb
+0004.375 (0) A useful amount of data was added after this amount of zip processing: 0.5 s (normalised: 0.5 s, rate: 51967.2 Kb/s)
+0004.379 (0) Performance is good - will increase the amount of data we attempt to batch (time=0.49317097663879, normalised_time=0.49261877621692, max_time=-1, data points known=0, old_max_bytes=26214400, new_max_bytes=209715200)
+0004.384 (0) Zip: backup_2016-03-11-2037_Mindbridge_643bd845a408-uploads.zip.tmp: 300 files added (on-disk size: 25682.6 Kb)
+0004.615 (0) backup_2016-03-11-2037_Mindbridge_643bd845a408-uploads.zip.tmp: size is now: 42.00 Mb
+0004.783 (0) Created uploads zip (0) - 42987.1 Kb in 0.7 s (61763.3 Kb/s) (SHA1 checksum: 582e990434dbf8468dfaef52d093d396f6546d71)
+0004.787 (0) Beginning backup of other directories found in the content directory (index: 0)
+0004.789 (0) Exclusion option setting (others): upgrade,cache,updraft,backup*,*backups,mysql.sql
+0004.790 (0) Looking for candidates to back up in: /var/www/mindbridge/public_html/wp-content
+0004.792 (0) finding files: upgrade: skipping: excluded by options
+0004.793 (0) finding files: plugins: skipping: this is the plugins directory
+0004.795 (0) finding files: uploads: skipping: this is the uploads directory
+0004.796 (0) finding files: updraft: skipping: this is the updraft directory
+0004.798 (0) finding files: index.php: adding to list (1)
+0004.799 (0) finding files: themes: skipping: this is the themes directory
+0004.803 (0) Total entities for the zip file: 0 directories, 1 files (0 skipped as non-modified), 0 Mb
+0004.810 (0) backup_2016-03-11-2037_Mindbridge_643bd845a408-others.zip.tmp: size is now: 0.00 Mb
+0004.818 (0) Created others zip (0) - 0.2 Kb in 0 s (11.5 Kb/s) (SHA1 checksum: d66b0e683b8e35db6cb85caa90c2b915e189cb9d)
+0004.826 (0) Saving backup status to database (elements: 8)
+0004.830 (0) Beginning creation of database dump (WordPress DB)
+0004.834 (0) Testing: /usr/bin/mysqldump
+0004.860 (0) Working binary mysqldump found: /usr/bin/mysqldump
+0004.878 (0) Table hl8kn_options: Total expected rows (approximate): 475
+0004.918 (0) Table hl8kn_options: Total rows added: 474 in 0.04 seconds
+0004.921 (0) Table hl8kn_options: finishing file (backup_2016-03-11-2037_Mindbridge_643bd845a408-db-table-hl8kn_options.table.gz - 130.3 Kb)
+0004.927 (0) Table hl8kn_users: Total expected rows (approximate): 1
+0004.930 (0) Table hl8kn_users: Total rows added: 1 in 0.00 seconds
+0004.932 (0) Table hl8kn_users: finishing file (backup_2016-03-11-2037_Mindbridge_643bd845a408-db-table-hl8kn_users.table.gz - 0.6 Kb)
+0004.938 (0) Table hl8kn_usermeta: Total expected rows (approximate): 42
+0004.941 (0) Table hl8kn_usermeta: Total rows added: 42 in 0.00 seconds
+0004.943 (0) Table hl8kn_usermeta: finishing file (backup_2016-03-11-2037_Mindbridge_643bd845a408-db-table-hl8kn_usermeta.table.gz - 1.7 Kb)
+0004.948 (0) Table hl8kn_commentmeta: Total expected rows (approximate): 29375
+0006.054 (0) Table hl8kn_commentmeta: binary mysqldump finished (writes: 48) in 1.10 seconds
+0006.059 (0) Table hl8kn_commentmeta: finishing file (backup_2016-03-11-2037_Mindbridge_643bd845a408-db-table-hl8kn_commentmeta.table.gz - 4089.1 Kb)
+0006.067 (0) Table hl8kn_comments: Total expected rows (approximate): 8375
+0007.084 (0) Table hl8kn_comments: binary mysqldump finished (writes: 57) in 1.01 seconds
+0007.088 (0) Table hl8kn_comments: finishing file (backup_2016-03-11-2037_Mindbridge_643bd845a408-db-table-hl8kn_comments.table.gz - 3644 Kb)
+0007.095 (0) Table hl8kn_links: Total expected rows (approximate): 0
+0007.099 (0) Table hl8kn_links: Total rows added: 0 in 0.00 seconds
+0007.101 (0) Table hl8kn_links: finishing file (backup_2016-03-11-2037_Mindbridge_643bd845a408-db-table-hl8kn_links.table.gz - 0.4 Kb)
+0007.107 (0) Table hl8kn_postmeta: Total expected rows (approximate): 629
+0007.123 (0) Table hl8kn_postmeta: Total rows added: 629 in 0.01 seconds
+0007.126 (0) Table hl8kn_postmeta: finishing file (backup_2016-03-11-2037_Mindbridge_643bd845a408-db-table-hl8kn_postmeta.table.gz - 14.5 Kb)
+0007.132 (0) Table hl8kn_posts: Total expected rows (approximate): 221
+0007.175 (0) Table hl8kn_posts: Total rows added: 221 in 0.04 seconds
+0007.179 (0) Table hl8kn_posts: finishing file (backup_2016-03-11-2037_Mindbridge_643bd845a408-db-table-hl8kn_posts.table.gz - 57.2 Kb)
+0007.186 (0) Table hl8kn_term_relationships: Total expected rows (approximate): 139
+0007.191 (0) Table hl8kn_term_relationships: Total rows added: 139 in 0.00 seconds
+0007.194 (0) Table hl8kn_term_relationships: finishing file (backup_2016-03-11-2037_Mindbridge_643bd845a408-db-table-hl8kn_term_relationships.table.gz - 0.7 Kb)
+0007.202 (0) Table hl8kn_term_taxonomy: Total expected rows (approximate): 93
+0007.207 (0) Table hl8kn_term_taxonomy: Total rows added: 93 in 0.00 seconds
+0007.210 (0) Table hl8kn_term_taxonomy: finishing file (backup_2016-03-11-2037_Mindbridge_643bd845a408-db-table-hl8kn_term_taxonomy.table.gz - 1 Kb)
+0007.218 (0) Table hl8kn_termmeta: Total expected rows (approximate): 0
+0007.222 (0) Table hl8kn_termmeta: Total rows added: 0 in 0.00 seconds
+0007.224 (0) Table hl8kn_termmeta: finishing file (backup_2016-03-11-2037_Mindbridge_643bd845a408-db-table-hl8kn_termmeta.table.gz - 0.4 Kb)
+0007.230 (0) Table hl8kn_terms: Total expected rows (approximate): 93
+0007.235 (0) Table hl8kn_terms: Total rows added: 93 in 0.00 seconds
+0007.238 (0) Table hl8kn_terms: finishing file (backup_2016-03-11-2037_Mindbridge_643bd845a408-db-table-hl8kn_terms.table.gz - 1.5 Kb)
+0007.246 (0) Table hl8kn_instagram_bilder: Total expected rows (approximate): 0
+0007.249 (0) Table hl8kn_instagram_bilder: Total rows added: 0 in 0.00 seconds
+0007.252 (0) Table hl8kn_instagram_bilder: finishing file (backup_2016-03-11-2037_Mindbridge_643bd845a408-db-table-hl8kn_instagram_bilder.table.gz - 0.3 Kb)
+0007.260 (0) Table hl8kn_instagram_info: Total expected rows (approximate): 9
+0007.265 (0) Table hl8kn_instagram_info: Total rows added: 9 in 0.00 seconds
+0007.268 (0) Table hl8kn_instagram_info: finishing file (backup_2016-03-11-2037_Mindbridge_643bd845a408-db-table-hl8kn_instagram_info.table.gz - 0.3 Kb)
+0007.276 (0) Table hl8kn_instagram_user_info: Total expected rows (approximate): 1
+0007.280 (0) Table hl8kn_instagram_user_info: Total rows added: 1 in 0.00 seconds
+0007.282 (0) Table hl8kn_instagram_user_info: finishing file (backup_2016-03-11-2037_Mindbridge_643bd845a408-db-table-hl8kn_instagram_user_info.table.gz - 0.3 Kb)
+0007.290 (0) backup_2016-03-11-2037_Mindbridge_643bd845a408-db-table-hl8kn_options.table.gz (1/15): adding to final database dump
+0007.319 (0) backup_2016-03-11-2037_Mindbridge_643bd845a408-db-table-hl8kn_users.table.gz (2/15): adding to final database dump
+0007.322 (0) backup_2016-03-11-2037_Mindbridge_643bd845a408-db-table-hl8kn_usermeta.table.gz (3/15): adding to final database dump
+0007.324 (0) backup_2016-03-11-2037_Mindbridge_643bd845a408-db-table-hl8kn_commentmeta.table.gz (4/15): adding to final database dump
+0008.236 (0) backup_2016-03-11-2037_Mindbridge_643bd845a408-db-table-hl8kn_comments.table.gz (5/15): adding to final database dump
+0009.099 (0) backup_2016-03-11-2037_Mindbridge_643bd845a408-db-table-hl8kn_links.table.gz (6/15): adding to final database dump
+0009.102 (0) backup_2016-03-11-2037_Mindbridge_643bd845a408-db-table-hl8kn_postmeta.table.gz (7/15): adding to final database dump
+0009.109 (0) backup_2016-03-11-2037_Mindbridge_643bd845a408-db-table-hl8kn_posts.table.gz (8/15): adding to final database dump
+0009.128 (0) backup_2016-03-11-2037_Mindbridge_643bd845a408-db-table-hl8kn_term_relationships.table.gz (9/15): adding to final database dump
+0009.131 (0) backup_2016-03-11-2037_Mindbridge_643bd845a408-db-table-hl8kn_term_taxonomy.table.gz (10/15): adding to final database dump
+0009.133 (0) backup_2016-03-11-2037_Mindbridge_643bd845a408-db-table-hl8kn_termmeta.table.gz (11/15): adding to final database dump
+0009.135 (0) backup_2016-03-11-2037_Mindbridge_643bd845a408-db-table-hl8kn_terms.table.gz (12/15): adding to final database dump
+0009.137 (0) backup_2016-03-11-2037_Mindbridge_643bd845a408-db-table-hl8kn_instagram_bilder.table.gz (13/15): adding to final database dump
+0009.139 (0) backup_2016-03-11-2037_Mindbridge_643bd845a408-db-table-hl8kn_instagram_info.table.gz (14/15): adding to final database dump
+0009.141 (0) backup_2016-03-11-2037_Mindbridge_643bd845a408-db-table-hl8kn_instagram_user_info.table.gz (15/15): adding to final database dump
+0009.143 (0) backup_2016-03-11-2037_Mindbridge_643bd845a408-db.gz: finished writing out complete database file (7928 Kb)
+0009.178 (0) Total database tables backed up: 15 (backup_2016-03-11-2037_Mindbridge_643bd845a408-db.gz, size: 8129555, checksum (SHA1): 303f3b5f9d288f6bc06b0d442f45ccb852802508)
+0009.183 (0) Saving backup history
+0009.191 (0) backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip: plugins: This file has not yet been successfully uploaded: will queue
+0009.193 (0) backup_2016-03-11-2037_Mindbridge_643bd845a408-themes.zip: themes: This file has not yet been successfully uploaded: will queue
+0009.195 (0) backup_2016-03-11-2037_Mindbridge_643bd845a408-uploads.zip: uploads: This file has not yet been successfully uploaded: will queue
+0009.197 (0) backup_2016-03-11-2037_Mindbridge_643bd845a408-others.zip: others: This file has not yet been successfully uploaded: will queue
+0009.199 (0) backup_2016-03-11-2037_Mindbridge_643bd845a408-db.gz: db: This file has not yet been successfully uploaded: will queue
+0009.204 (0) Requesting upload of the files that have not yet been successfully uploaded (5)
+0009.210 (0) Cloud backup selection (1/1): dropbox (last)
+0009.213 (0) Beginning dispatch of backup to remote (dropbox)
+0009.214 (0) Dropbox: begin cloud upload
+0009.219 (0) Dropbox: access gained
+0010.124 (0) Dropbox quota usage: normal=172728.2 Mb, shared=1805.2 Mb, total=1065728 Mb, available=891194.6 Mb
+0010.128 (0) Dropbox: Attempt to upload: backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip to: backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip
+0011.428 (0) Dropbox chunked upload: 7.7 % uploaded (AAAAAAAEEP_aWHL1vZnDWA, 1048576)
+0013.195 (0) Dropbox chunked upload: 15.4 % uploaded (AAAAAAAEEP_aWHL1vZnDWA, 2097152)
+0016.534 (0) Dropbox chunked upload: 23.1 % uploaded (AAAAAAAEEP_aWHL1vZnDWA, 3145728)
+0019.200 (0) Dropbox chunked upload: 30.9 % uploaded (AAAAAAAEEP_aWHL1vZnDWA, 4194304)
+0020.599 (0) Dropbox chunked upload: 38.6 % uploaded (AAAAAAAEEP_aWHL1vZnDWA, 5242880)
+0022.255 (0) Dropbox chunked upload: 46.3 % uploaded (AAAAAAAEEP_aWHL1vZnDWA, 6291456)
+0024.089 (0) Dropbox chunked upload: 54 % uploaded (AAAAAAAEEP_aWHL1vZnDWA, 7340032)
+0026.537 (0) Dropbox chunked upload: 61.7 % uploaded (AAAAAAAEEP_aWHL1vZnDWA, 8388608)
+0028.658 (0) Dropbox chunked upload: 69.4 % uploaded (AAAAAAAEEP_aWHL1vZnDWA, 9437184)
+0030.342 (0) Dropbox chunked upload: 77.1 % uploaded (AAAAAAAEEP_aWHL1vZnDWA, 10485760)
+0032.221 (0) Dropbox chunked upload: 84.8 % uploaded (AAAAAAAEEP_aWHL1vZnDWA, 11534336)
+0034.680 (0) Dropbox chunked upload: 92.6 % uploaded (AAAAAAAEEP_aWHL1vZnDWA, 12582912)
+0036.131 (0) Dropbox chunked upload: 100 % uploaded (AAAAAAAEEP_aWHL1vZnDWA, 13595779)
+0037.803 (0) Recording as successfully uploaded: backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip (d3adacd830969f61db0e81d24ea0781f)
+0037.816 (0) Deleting local file: backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip: OK
+0037.820 (0) Dropbox: File upload success (backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip): 13277 Kb in 27s (479 Kb/s)
+0038.686 (0) Dropbox quota usage: normal=172741.2 Mb, shared=1805.2 Mb, total=1065728 Mb, available=891181.6 Mb
+0038.691 (0) Dropbox: Attempt to upload: backup_2016-03-11-2037_Mindbridge_643bd845a408-themes.zip to: backup_2016-03-11-2037_Mindbridge_643bd845a408-themes.zip
+0040.105 (0) Dropbox chunked upload: 29 % uploaded (AAAAAAAEEQD_SX7wpLR-1Q, 1048576)
+0041.653 (0) Dropbox chunked upload: 58 % uploaded (AAAAAAAEEQD_SX7wpLR-1Q, 2097152)
+0043.544 (0) Dropbox chunked upload: 87 % uploaded (AAAAAAAEEQD_SX7wpLR-1Q, 3145728)
+0046.435 (0) Dropbox chunked upload: 100 % uploaded (AAAAAAAEEQD_SX7wpLR-1Q, 3614101)
+0048.392 (0) Recording as successfully uploaded: backup_2016-03-11-2037_Mindbridge_643bd845a408-themes.zip (e0e5d706be5c1c668afff53313b50423)
+0048.400 (0) Deleting local file: backup_2016-03-11-2037_Mindbridge_643bd845a408-themes.zip: OK
+0048.403 (0) Dropbox: File upload success (backup_2016-03-11-2037_Mindbridge_643bd845a408-themes.zip): 3529 Kb in 9s (363 Kb/s)
+0049.276 (0) Dropbox quota usage: normal=172744.6 Mb, shared=1805.2 Mb, total=1065728 Mb, available=891178.2 Mb
+0049.279 (0) Dropbox: Attempt to upload: backup_2016-03-11-2037_Mindbridge_643bd845a408-uploads.zip to: backup_2016-03-11-2037_Mindbridge_643bd845a408-uploads.zip
+0050.670 (0) Dropbox chunked upload: 2.4 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 1048576)
+0052.265 (0) Dropbox chunked upload: 4.8 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 2097152)
+0054.257 (0) Dropbox chunked upload: 7.1 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 3145728)
+0056.620 (0) Dropbox chunked upload: 9.5 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 4194304)
+0058.091 (0) Dropbox chunked upload: 11.9 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 5242880)
+0061.243 (0) Dropbox chunked upload: 14.3 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 6291456)
+0062.963 (0) Dropbox chunked upload: 16.7 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 7340032)
+0065.656 (0) Dropbox chunked upload: 19.1 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 8388608)
+0067.332 (0) Dropbox chunked upload: 21.4 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 9437184)
+0069.045 (0) Dropbox chunked upload: 23.8 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 10485760)
+0070.878 (0) Dropbox chunked upload: 26.2 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 11534336)
+0073.660 (0) Dropbox chunked upload: 28.6 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 12582912)
+0075.092 (0) Dropbox chunked upload: 31 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 13631488)
+0076.861 (0) Dropbox chunked upload: 33.3 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 14680064)
+0078.727 (0) Dropbox chunked upload: 35.7 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 15728640)
+0081.202 (0) Dropbox chunked upload: 38.1 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 16777216)
+0082.646 (0) Dropbox chunked upload: 40.5 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 17825792)
+0084.382 (0) Dropbox chunked upload: 42.9 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 18874368)
+0086.802 (0) Dropbox chunked upload: 45.3 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 19922944)
+0090.355 (0) Dropbox chunked upload: 47.6 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 20971520)
+0091.702 (0) Dropbox chunked upload: 50 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 22020096)
+0093.414 (0) Dropbox chunked upload: 52.4 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 23068672)
+0095.172 (0) Dropbox chunked upload: 54.8 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 24117248)
+0097.515 (0) Dropbox chunked upload: 57.2 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 25165824)
+0099.803 (0) Dropbox chunked upload: 59.6 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 26214400)
+0101.360 (0) Dropbox chunked upload: 61.9 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 27262976)
+0103.263 (0) Dropbox chunked upload: 64.3 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 28311552)
+0106.637 (0) Dropbox chunked upload: 66.7 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 29360128)
+0108.021 (0) Dropbox chunked upload: 69.1 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 30408704)
+0109.635 (0) Dropbox chunked upload: 71.5 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 31457280)
+0111.404 (0) Dropbox chunked upload: 73.8 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 32505856)
+0113.997 (0) Dropbox chunked upload: 76.2 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 33554432)
+0115.400 (0) Dropbox chunked upload: 78.6 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 34603008)
+0117.002 (0) Dropbox chunked upload: 81 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 35651584)
+0122.454 (0) Dropbox chunked upload: 83.4 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 36700160)
+0124.891 (0) Dropbox chunked upload: 85.8 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 37748736)
+0126.640 (0) Dropbox chunked upload: 88.1 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 38797312)
+0128.186 (0) Dropbox chunked upload: 90.5 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 39845888)
+0129.886 (0) Dropbox chunked upload: 92.9 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 40894464)
+0132.339 (0) Dropbox chunked upload: 95.3 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 41943040)
+0133.789 (0) Dropbox chunked upload: 97.7 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 42991616)
+0135.567 (0) Dropbox chunked upload: 100 % uploaded (AAAAAAAEEQEXhUgS2KyT6Q, 44018748)
+0495.553 (1) Opened log file at time: Fri, 11 Mar 2016 20:45:43 +0000 on http://mindbridge.dk
+0495.557 (1) UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.11.23 WP: 4.4.2 PHP: 5.4.45-1~dotdeb+7.1 (Linux localhost 4.4.0-x86_64-linode63 #2 SMP Tue Jan 19 12:43:53 EST 2016 x86_64) MySQL: 5.6.19 Server: Apache safe_mode: 0 max_execution_time: 900 memory_limit: 512M (used: 32.8M | 33.3M) multisite: N mcrypt: Y LANG: C ZipArchive::addFile: Y
+0495.560 (1) Free space on disk containing Updraft's temporary directory: 33598.1 Mb
+0495.565 (1) Backup run: resumption=1, nonce=643bd845a408, begun at=1457728648 (495s ago), job type=backup, previous check-in=135.6s
+0495.569 (1) Scheduling a resumption (2) after 412 seconds (1457729555) in case this run gets aborted
+0495.604 (1) Checking if we have a zip executable available
+0495.607 (1) Zip engine: found/will use a binary zip: /usr/bin/zip
+0495.609 (1) Creation of backups of directories: already finished
+0495.611 (1) Saving backup status to database (elements: 8)
+0495.616 (1) Database dump (WordPress DB): Creation was completed already
+0495.618 (1) Saving backup history
+0495.628 (1) backup_2016-03-11-2037_Mindbridge_643bd845a408-plugins.zip: plugins: This file has already been successfully uploaded
+0495.630 (1) backup_2016-03-11-2037_Mindbridge_643bd845a408-themes.zip: themes: This file has already been successfully uploaded
+0495.633 (1) backup_2016-03-11-2037_Mindbridge_643bd845a408-uploads.zip: uploads: This file has not yet been successfully uploaded: will queue
+0495.635 (1) backup_2016-03-11-2037_Mindbridge_643bd845a408-others.zip: others: This file has not yet been successfully uploaded: will queue
+0495.637 (1) backup_2016-03-11-2037_Mindbridge_643bd845a408-db.gz: db: This file has not yet been successfully uploaded: will queue
+0495.642 (1) Requesting upload of the files that have not yet been successfully uploaded (3)
+0495.645 (1) Cloud backup selection (1/1): dropbox (last)
+0495.650 (1) Beginning dispatch of backup to remote (dropbox)
+0495.653 (1) Dropbox: begin cloud upload
+0495.667 (1) Dropbox: access gained
+0496.487 (1) Dropbox quota usage: normal=172786.6 Mb, shared=1805.2 Mb, total=1065728 Mb, available=891136.2 Mb
+0496.491 (1) This is a resumption: 44018748 bytes had already been uploaded
+0496.495 (1) Dropbox: Attempt to upload: backup_2016-03-11-2037_Mindbridge_643bd845a408-uploads.zip to: backup_2016-03-11-2037_Mindbridge_643bd845a408-uploads.zip
+0497.317 (1) Recording as successfully uploaded: backup_2016-03-11-2037_Mindbridge_643bd845a408-uploads.zip (cf99c2428cd376fc3a067690524c99a1)
+0497.328 (1) Deleting local file: backup_2016-03-11-2037_Mindbridge_643bd845a408-uploads.zip: OK
+0497.331 (1) Dropbox: File upload success (backup_2016-03-11-2037_Mindbridge_643bd845a408-uploads.zip): 42987 Kb in 0s (51181 Kb/s)
+0498.216 (1) Dropbox quota usage: normal=172786.6 Mb, shared=1805.2 Mb, total=1065728 Mb, available=891136.2 Mb
+0498.219 (1) Dropbox: Attempt to upload: backup_2016-03-11-2037_Mindbridge_643bd845a408-others.zip to: backup_2016-03-11-2037_Mindbridge_643bd845a408-others.zip
+0498.962 (1) Dropbox chunked upload: 100 % uploaded (AAAAAAAEEQIGlffvUMhwwg, 196)
+0500.996 (1) Recording as successfully uploaded: backup_2016-03-11-2037_Mindbridge_643bd845a408-others.zip (9d483a015239dfe849dc6444c5baeb3a)
+0501.006 (1) Deleting local file: backup_2016-03-11-2037_Mindbridge_643bd845a408-others.zip: OK
+0501.009 (1) Dropbox: File upload success (backup_2016-03-11-2037_Mindbridge_643bd845a408-others.zip): 0 Kb in 2s (0 Kb/s)
+0501.880 (1) Dropbox quota usage: normal=172786.6 Mb, shared=1805.2 Mb, total=1065728 Mb, available=891136.2 Mb
+0501.882 (1) Dropbox: Attempt to upload: backup_2016-03-11-2037_Mindbridge_643bd845a408-db.gz to: backup_2016-03-11-2037_Mindbridge_643bd845a408-db.gz
+0503.459 (1) Dropbox chunked upload: 12.9 % uploaded (AAAAAAAEEQPBayCA1aFdkQ, 1048576)
+0504.973 (1) Dropbox chunked upload: 25.8 % uploaded (AAAAAAAEEQPBayCA1aFdkQ, 2097152)
+0506.924 (1) Dropbox chunked upload: 38.7 % uploaded (AAAAAAAEEQPBayCA1aFdkQ, 3145728)
+0509.514 (1) Dropbox chunked upload: 51.6 % uploaded (AAAAAAAEEQPBayCA1aFdkQ, 4194304)
+0510.961 (1) Dropbox chunked upload: 64.5 % uploaded (AAAAAAAEEQPBayCA1aFdkQ, 5242880)
+0512.618 (1) Dropbox chunked upload: 77.4 % uploaded (AAAAAAAEEQPBayCA1aFdkQ, 6291456)
+0514.256 (1) Dropbox chunked upload: 90.3 % uploaded (AAAAAAAEEQPBayCA1aFdkQ, 7340032)
+0516.268 (1) Dropbox chunked upload: 100 % uploaded (AAAAAAAEEQPBayCA1aFdkQ, 8129555)
+0518.643 (1) Recording as successfully uploaded: backup_2016-03-11-2037_Mindbridge_643bd845a408-db.gz (b3791dfc84fcc038f476e8ae549269c4)
+0518.657 (1) Deleting local file: backup_2016-03-11-2037_Mindbridge_643bd845a408-db.gz: OK
+0518.660 (1) Dropbox: File upload success (backup_2016-03-11-2037_Mindbridge_643bd845a408-db.gz): 7939 Kb in 16s (473 Kb/s)
+0518.670 (1) Retain: beginning examination of existing backup sets; user setting: retain_files=4, retain_db=4
+0518.673 (1) Number of backup sets in history: 5
+0518.676 (1) Examining backup set with datestamp: 1457728648 (Mar 11 2016 20:37:28)
+0518.678 (1) This backup set (1457728648) is the backup set just made, so will not be deleted.
+0518.680 (1) This backup set (1457728648) is the backup set just made, so will not be deleted, despite being over the retain limit.
+0518.682 (1) This backup set (1457728648) is the backup set just made, so will not be deleted, despite being over the retain limit.
+0518.683 (1) This backup set (1457728648) is the backup set just made, so will not be deleted, despite being over the retain limit.
+0518.683 (1) This backup set (1457728648) is the backup set just made, so will not be deleted, despite being over the retain limit.
+0518.683 (1) 1457728648: this backup set remains non-empty (1/1); will retain in history
+0518.685 (1) Examining backup set with datestamp: 1457642218 (Mar 10 2016 20:36:58)
+0518.686 (1) 1457642218: this backup set remains non-empty (1/1); will retain in history
+0518.688 (1) Examining backup set with datestamp: 1457555834 (Mar 09 2016 20:37:14)
+0518.690 (1) 1457555834: this backup set remains non-empty (1/1); will retain in history
+0518.691 (1) Examining backup set with datestamp: 1457469463 (Mar 08 2016 20:37:43)
+0518.693 (1) 1457469463: this backup set remains non-empty (1/1); will retain in history
+0518.695 (1) Examining backup set with datestamp: 1457383042 (Mar 07 2016 20:37:22)
+0518.696 (1) 1457383042: db: this set includes a database (backup_2016-03-07-2037_Mindbridge_004b6ce170bf-db.gz); db count is now 4
+0518.698 (1) 1457383042: db: over retain limit (4); will delete this database
+0518.699 (1) Delete file: backup_2016-03-07-2037_Mindbridge_004b6ce170bf-db.gz, service=dropbox
+0518.701 (1) Dropbox: request deletion: backup_2016-03-07-2037_Mindbridge_004b6ce170bf-db.gz
+0520.003 (1) Dropbox: delete succeeded
+0520.009 (1) plugins: 1457383042: over retain limit (4); will delete this file entity
+0520.011 (1) themes: 1457383042: over retain limit (4); will delete this file entity
+0520.013 (1) uploads: 1457383042: over retain limit (4); will delete this file entity
+0520.015 (1) others: 1457383042: over retain limit (4); will delete this file entity
+0520.017 (1) Delete file: backup_2016-03-07-2037_Mindbridge_004b6ce170bf-plugins.zip, service=dropbox
+0520.019 (1) Delete file: backup_2016-03-07-2037_Mindbridge_004b6ce170bf-themes.zip, service=dropbox
+0520.021 (1) Delete file: backup_2016-03-07-2037_Mindbridge_004b6ce170bf-uploads.zip, service=dropbox
+0520.023 (1) Delete file: backup_2016-03-07-2037_Mindbridge_004b6ce170bf-others.zip, service=dropbox
+0520.025 (1) Dropbox: request deletion: backup_2016-03-07-2037_Mindbridge_004b6ce170bf-plugins.zip
+0521.023 (1) Dropbox: delete succeeded
+0521.025 (1) Dropbox: request deletion: backup_2016-03-07-2037_Mindbridge_004b6ce170bf-themes.zip
+0522.112 (1) Dropbox: delete succeeded
+0522.114 (1) Dropbox: request deletion: backup_2016-03-07-2037_Mindbridge_004b6ce170bf-uploads.zip
+0523.436 (1) Dropbox: delete succeeded
+0523.438 (1) Dropbox: request deletion: backup_2016-03-07-2037_Mindbridge_004b6ce170bf-others.zip
+0524.876 (1) Dropbox: delete succeeded
+0524.882 (1) 1457383042: this backup set is now empty; will remove from history
+0524.884 (1) 1457383042: deleting log file (log.004b6ce170bf.txt)
+0524.890 (1) Retain: saving new backup history (sets now: 4) and finishing retain operation
+0524.898 (1) Resume backup (643bd845a408, 1): finish run
+0524.902 (1) There were no errors in the uploads, so the 'resume' event (2) is being unscheduled
+0524.908 (1) No email will/can be sent - the user has not configured an email address.
+0524.910 (1) The backup apparently succeeded and is now complete
