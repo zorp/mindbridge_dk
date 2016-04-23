@@ -59,7 +59,7 @@ if (!class_exists('UpdraftPlus_Remote_Communications')):
 class UpdraftPlus_Remote_Communications {
 
 	// Version numbers relate to versions of this PHP library only (i.e. it's not a protocol support number, and version numbers of other compatible libraries (e.g. JavaScript) are not comparable)
-	public $version = '1.4.1';
+	public $version = '1.4.2';
 
 	private $key_name_indicator;
 
@@ -275,12 +275,12 @@ class UpdraftPlus_Remote_Communications {
 		if ($this->key_option_name) update_site_option($this->key_option_name, $this->key_local);
 	}
 
-	public function generate_new_keypair() {
+	public function generate_new_keypair($key_size = 2048) {
 
 		$this->ensure_crypto_loaded();
 
 		$rsa = new Crypt_RSA();
-		$keys = $rsa->createKey(2048);
+		$keys = $rsa->createKey($key_size);
 
 		if (empty($keys['privatekey'])) {
 			$this->set_key_local(false);
