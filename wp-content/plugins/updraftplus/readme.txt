@@ -2,8 +2,8 @@
 Contributors: Backup with UpdraftPlus, DavidAnderson, DNutbourne
 Tags: backup, backups, restore, amazon backup, s3 backup, dropbox backup, google drive backup, rackspace cloud files, rackspace backup, dreamhost, dreamobjects backup, ftp backup, webdav backup, google cloud storage, onedrive, azure, back up, multisite, restoration, sftp backup, ftps, scp backup, migrate, duplicate, copy, mysql backup, database backup, db backups, website backup, wordpress backup, full backup, openstack backup, sicherung
 Requires at least: 3.2
-Tested up to: 4.5
-Stable tag: 1.12.13
+Tested up to: 4.6
+Stable tag: 1.12.17
 Author URI: https://updraftplus.com
 Donate link: http://david.dw-perspective.org.uk/donate
 License: GPLv3 or later
@@ -14,7 +14,7 @@ Backup and restoration made easy. Complete backups; manual or scheduled (backup 
 
 <a href="https://updraftplus.com">UpdraftPlus</a> simplifies backups (and restoration). Backup into the cloud (Amazon S3 (or compatible), Dropbox, Google Drive, Rackspace Cloud, DreamObjects, FTP, Openstack Swift, UpdraftPlus Vault and email) and restore with a single click. Backups of files and database can have separate schedules. The paid version also backs up to Microsoft OneDrive, Microsoft Azure, Google Cloud Storage, SFTP, SCP, and WebDAV.
 
-<strong>Top-quality:</strong> UpdraftPlus is the highest-ranking backup plugin on wordpress.org, with <strong>over 700,000 currently active installs</strong>. Widely tested and reliable, this is the world's #1 most popular and mostly highly rated scheduled backup plugin. Millions of backups completed!
+<strong>Top-quality:</strong> UpdraftPlus is the highest-ranking backup plugin on wordpress.org, with <strong>over 800,000 currently active installs</strong>. Widely tested and reliable, this is the world's #1 most popular and mostly highly rated scheduled backup plugin. Millions of backups completed!
 
 [vimeo https://vimeo.com/154870690]
 
@@ -125,11 +125,49 @@ Thanks for asking; yes, we've got a few. Check out this profile page - https://p
 
 The <a href="https://updraftplus.com/news/">UpdraftPlus backup blog</a> is the best place to learn in more detail about any important changes.
 
-N.B. Paid versions of UpdraftPlus Backup / Restore have a version number which is 1 higher in the first digit, and has an extra component on the end, but the changelog below still applies. i.e. changes listed for 1.12.12 of the free version correspond to changes made in 2.12.12.x of the paid version.
+N.B. Paid versions of UpdraftPlus Backup / Restore have a version number which is 1 higher in the first digit, and has an extra component on the end, but the changelog below still applies. i.e. changes listed for 1.12.15 of the free version correspond to changes made in 2.12.15.x of the paid version.
 
-= Development version (not yet released/supported)
+= Development version (not yet released) =
 
+* TWEAK: When Microsoft OneDrive quota is insufficient, the advisory message from UD now includes the available quota (as well as the used)
+* FEATURE: The Azure add-on/Premium now supports new-style Azure storage, as well as classic
+* TWEAK: When logging Azure upload locations, include the account name
+* TWEAK: Make the entering of settings for WebDAV more user-friendly
+* TWEAK: Update bundled select2 to version 4.0.3
+
+= 1.12.17 - 19/Jul/2016 =
+
+* FIX: Previous free release included empty translation files
+* TWEAK: Add 'snapshots' to the default list of directories to exclude from the uploads backup (is used by another backup plugin - avoid backups-of-backups)
+* TWEAK: Add et_bloom_stats to the list of tables likely to be large, and not needing search/replacing
+
+= 1.12.16 - 07/Jul/2016 =
+
+* TWEAK: Log FTP progress upload less often (slight resource usage improvement)
+* TWEAK: For multi-archive backup sets, the HTML title attribute of download buttons had unnecessary duplicated information
+* TWEAK: Improve OneDrive performance by cacheing directory listings
+* TWEAK: Detect and handle a case in which OneDrive incorrectly reports a file as incompletely uploaded
+* FIX: OneDrive scanning of large directories for existing backup sets was only detecting the first 200 files
+
+= 1.12.15 - 06/Jul/2016 =
+
+* TWEAK: S3 now supports the new Mumbai region
+* TWEAK: If the user enters an AWS/S3 access key that looks prima facie invalid, then mention this in the error output
+* TWEAK: Make the message that the user is shown in the case of no network connectivity to updraftplus.com when connecting for updates (paid versions) clearer
 * TWEAK: Extend cacheing of enumeration of uploads that was introduced in 1.11.1 to other data in wp-content also
+* TWEAK: Avoid fatal error in Migrator if running via WP-CLI with the USER environment variable unset
+* TWEAK: When DB_CHARSET is defined but empty, treat it the same as if undefined
+* TWEAK: Add updraftplus_remotesend_udrpc_object_obtained action hook, allowing customisation of HTTP transport options for remote sending
+* TWEAK: Introduced new UPDRAFTPLUS_RESTORE_ALL_SETTINGS constant to assist in complicated load-balancing setups with duplicate install on the same URL
+* TWEAK: Update bundled tripleclick script to fix bug in teardown handler
+* TWEAK: Update bundled UDRPC library to version 1.4.8
+* TWEAK: Patch Labelauty to be friendly to screen-readers
+* TWEAK: Suppress the UD updates check on paid versions that immediately follows a WP automatic core security update
+* TWEAK: Handle missing UpdraftCentral command classes more elegantly
+* FEATURE: Endpoint handlers for forthcoming updates and user mangement features in UpdraftCentral
+* TRANSLATIONS: Remove bundled German (de_DE) translation, since this is now retrieved from wordpress.org
+* FIX: Fix inaccurate reporting of the current Vault quota usage in the report email
+* FIX: Fix logic errors in processing return codes when no direct MySQL/MySQLi connection was possible in restoring that could cause UpdraftPlus to wrongly conclude that restoring was not possible
 
 = 1.12.13 - 07/Jun/2016 =
 
@@ -225,4 +263,4 @@ We recognise and thank the following for code and/or libraries used and/or modif
 
 
 == Upgrade Notice ==
-* 1.12.13: Various small updates and fixes
+* 1.12.17: The previous release did not include non-English translations
