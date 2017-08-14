@@ -187,6 +187,15 @@ class UpdraftPlus_Notices extends Updraft_Notices {
 				'supported_positions' => $this->anywhere,
 				'validity_function' => 'wp_optimize_installed',
 			),
+			'keyy' => array(
+				'prefix' => '',
+				'title' => 'Keyy',
+				'text' => __("Instant and secure logon with a wave of your phone.", "updraftplus") . ' ' . $this->url_start(true,'getkeyy.com') . __("Find out more about our revolutionary new WordPress plugin.",'updraftplus') . $this->url_end(true,'getkeyy.com'),
+				'image' => 'notices/keyy_logo.png',
+				'dismiss_time' => 'dismiss_notice',
+				'supported_positions' => $this->anywhere,
+				'validity_function' => 'keyy_installed',
+			),
 			
 			//The sale adverts content starts here
 			'blackfriday' => array(
@@ -197,9 +206,9 @@ class UpdraftPlus_Notices extends Updraft_Notices {
 				'button_link' => 'https://updraftplus.com/landing/updraftplus-premium',
 				'button_meta' => 'updraftplus',
 				'dismiss_time' => 'dismiss_season',
-				'discount_code' => 'blackfridaysale2016',
-				'valid_from' => '2016-11-23 00:00:00',
-				'valid_to' => '2016-11-30 23:59:59',
+				'discount_code' => 'blackfridaysale2017',
+				'valid_from' => '2017-11-20 00:00:00',
+				'valid_to' => '2017-11-30 23:59:59',
 				'supported_positions' => $this->dashboard_top_or_report,
 			),
 			'christmas' => array(
@@ -210,9 +219,9 @@ class UpdraftPlus_Notices extends Updraft_Notices {
 				'button_link' => 'https://updraftplus.com/landing/updraftplus-premium',
 				'button_meta' => 'updraftplus',
 				'dismiss_time' => 'dismiss_season',
-				'discount_code' => 'christmassale2016',
-				'valid_from' => '2016-12-01 00:00:00',
-				'valid_to' => '2016-12-25 23:59:59',
+				'discount_code' => 'christmassale2017',
+				'valid_from' => '2017-12-01 00:00:00',
+				'valid_to' => '2017-12-25 23:59:59',
 				'supported_positions' => $this->dashboard_top_or_report,
 			),
 			'newyear' => array(
@@ -223,9 +232,9 @@ class UpdraftPlus_Notices extends Updraft_Notices {
 				'button_link' => 'https://updraftplus.com/landing/updraftplus-premium',
 				'button_meta' => 'updraftplus',
 				'dismiss_time' => 'dismiss_season',
-				'discount_code' => 'newyearsale2017',
-				'valid_from' => '2016-12-26 00:00:00',
-				'valid_to' => '2017-01-01 23:59:59',
+				'discount_code' => 'newyearsale2018',
+				'valid_from' => '2017-12-26 00:00:00',
+				'valid_to' => '2018-01-14 23:59:59',
 				'supported_positions' => $this->dashboard_top_or_report,
 			),
 			'spring' => array(
@@ -236,9 +245,9 @@ class UpdraftPlus_Notices extends Updraft_Notices {
 				'button_link' => 'https://updraftplus.com/landing/updraftplus-premium',
 				'button_meta' => 'updraftplus',
 				'dismiss_time' => 'dismiss_season',
-				'discount_code' => 'springsale2017',
-				'valid_from' => '2017-04-01 00:00:00',
-				'valid_to' => '2017-04-30 23:59:59',
+				'discount_code' => 'springsale2018',
+				'valid_from' => '2018-04-01 00:00:00',
+				'valid_to' => '2018-04-30 23:59:59',
 				'supported_positions' => $this->dashboard_top_or_report,
 			),
 			'summer' => array(
@@ -249,20 +258,11 @@ class UpdraftPlus_Notices extends Updraft_Notices {
 				'button_link' => 'https://updraftplus.com/landing/updraftplus-premium',
 				'button_meta' => 'updraftplus',
 				'dismiss_time' => 'dismiss_season',
-				'discount_code' => 'summersale2017',
-				'valid_from' => '2017-07-01 00:00:00',
-				'valid_to' => '2017-07-31 23:59:59',
+				'discount_code' => 'summersale2018',
+				'valid_from' => '2018-07-01 00:00:00',
+				'valid_to' => '2018-07-31 23:59:59',
 				'supported_positions' => $this->dashboard_top_or_report,
-			),
-			'2fa' => array(
-				'prefix' => '',
-				'title' => 'Clef Two Factor Authentication is shutting down',
-				'text' => $this->url_start(true,'blog.getclef.com/discontinuing-support-for-clef-6c89febef5f3') . __("Clef confirms that they are closing down their two factor security plugin.",'updraftplus') . $this->url_end(true,'blog.getclef.com/discontinuing-support-for-clef-6c89febef5f3') . ' ' . __("Switch to UpdraftPlus's free alternative:", "updraftplus").' <a href="'.wp_nonce_url(self_admin_url('update.php?action=install-plugin&amp;updraftplus_noautobackup=1&amp;plugin=two-factor-authentication'), 'install-plugin_two-factor-authentication').'">'.__("install","updraftplus") .'</a> '. __("or", "updraftplus") . ' ' .$this->url_start(true,'wordpress.org/plugins/two-factor-authentication/') . __("get more info",'updraftplus') . $this->url_end(true,'wordpress.org/plugins/two-factor-authentication/') . '.',
-				'image' => 'notices/updraft_logo.png',
-				'dismiss_time' => 'dismiss_notice',
-				'supported_positions' => $this->anywhere,
-				'validity_function' => 'clef_2fa_installed',
-			),
+			)
 		);
 
 		return array_merge($parent_notice_content, $child_notice_content);
@@ -275,8 +275,10 @@ class UpdraftPlus_Notices extends Updraft_Notices {
 		//parent::notices_init();
 		$this->notices_content = (defined('UPDRAFTPLUS_NOADS_B') && UPDRAFTPLUS_NOADS_B) ? array() : $this->populate_notices_content();
 		global $updraftplus;
-		$our_version = @constant('SCRIPT_DEBUG') ? $updraftplus->version.'.'.time() : $updraftplus->version;
-		wp_enqueue_style('updraftplus-notices-css',  UPDRAFTPLUS_URL.'/css/updraftplus-notices.css', array(), $our_version);
+		$enqueue_version = (defined('SCRIPT_DEBUG') && SCRIPT_DEBUG) ? $updraftplus->version.'.'.time() : $updraftplus->version;
+		$min_or_not = (defined('SCRIPT_DEBUG') && SCRIPT_DEBUG) ? '' : '.min';
+
+		wp_enqueue_style('updraftplus-notices-css',  UPDRAFTPLUS_URL.'/css/updraftplus-notices'.$min_or_not.'.css', array(), $enqueue_version);
 	}
 
 	protected function translation_needed($plugin_base_dir = null, $product_name = null) {
@@ -290,6 +292,19 @@ class UpdraftPlus_Notices extends Updraft_Notices {
 
 		foreach ($plugins as $key => $value) {
 			if ($value['TextDomain'] == 'wp-optimize') {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	protected function keyy_installed($plugin_base_dir = null, $product_name = null) {
+		$wp_optimize_file = false;
+		if (!function_exists('get_plugins')) require_once(ABSPATH.'wp-admin/includes/plugin.php');
+		$plugins = get_plugins();
+
+		foreach ($plugins as $key => $value) {
+			if ($value['TextDomain'] == 'keyy') {
 				return false;
 			}
 		}
