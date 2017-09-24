@@ -93,7 +93,7 @@ class UpdraftPlus_UpdraftCentral_Listener {
 	/**
 	 * Do verification before calling this method
 	 *
-	 * @param  WP_User|Object $user         user object
+	 * @param  WP_User|Object $user         user object for autologin
 	 * @param  boolean        $redirect_url Redirect URL
 	 */
 	private function autologin_user($user, $redirect_url = false) {
@@ -160,9 +160,14 @@ class UpdraftPlus_UpdraftCentral_Listener {
 		
 		do_action('updraftcentral_listener_pre_udrpc_action', $command, $command_class, $data, $extra_info);
 		
+		global $updraftplus;
+		if (is_a($updraftplus, 'UpdraftPlus')) $updraftplus->register_wp_http_option_hooks();
+		
 		// Despatch
 		$msg = apply_filters('updraftcentral_listener_udrpc_action', call_user_func(array($command_class, $command), $data, $extra_info), $command_class, $class_prefix, $command, $data, $extra_info);
-	
+
+		if (is_a($updraftplus, 'UpdraftPlus')) $updraftplus->register_wp_http_option_hooks(false);
+		
 		return $this->return_rpc_message($msg);
 	}
 	

@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Easy WP SMTP
-Version: 1.2.5
+Version: 1.2.7
 Plugin URI: https://wp-ecommerce.net/easy-wordpress-smtp-send-emails-from-your-wordpress-site-using-a-smtp-server-2197
 Author: wpecommerce
 Author URI: https://wp-ecommerce.net/
@@ -169,7 +169,10 @@ if (!function_exists('swpsmtp_test_mail')) {
         $mail->Subject = $subject;
         $mail->MsgHTML($message);
         $mail->AddAddress($to_email);
-        $mail->SMTPDebug = 0;
+        global $debugMSG;
+        $debugMSG='';
+        $mail->Debugoutput=function($str, $level) {global $debugMSG; $debugMSG.=$str;};
+        $mail->SMTPDebug = 1;
 
         /* Send mail and return result */
         if (!$mail->Send())
@@ -177,6 +180,10 @@ if (!function_exists('swpsmtp_test_mail')) {
 
         $mail->ClearAddresses();
         $mail->ClearAllRecipients();
+
+        echo '<div class="swpsmtp-yellow-box"><h3>Debug Info</h3>';
+        echo '<textarea rows="20" style="width: 100%;">'.$debugMSG.'</textarea>';
+        echo '</div>';
 
         if (!empty($errors)) {
             return $errors;
@@ -252,9 +259,10 @@ if (!function_exists('swpsmtp_credentials_configured')) {
 if (!function_exists('swpsmtp_send_uninstall')) {
 
     function swpsmtp_send_uninstall() {
-        /* delete plugin options */
-        delete_site_option('swpsmtp_options');
-        delete_option('swpsmtp_options');
+        /* Don't delete plugin options. It is better to retain the options so if someone accidentally deactivates, the configuration is not lost. */
+        
+        //delete_site_option('swpsmtp_options');
+        //delete_option('swpsmtp_options');
     }
 
 }
