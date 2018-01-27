@@ -3,7 +3,7 @@ global $QData;
 $QData['AdsWid'] = 10;
 $QData['Ads'] = 10;
 $QData['Name'] = 'Quick Adsense';
-$QData['Version'] = '1.9.4';
+$QData['Version'] = '2.0';
 $QData['URI'] = 'http://quickadsense.com/';
 $QData['AdsWidName'] = 'AdsWidget%d (Quick Adsense)';
 $QData['Default'] = array(
@@ -72,7 +72,90 @@ function quick_adsense_2_get_options_with_defaults() {
 	$options = get_option('quick_adsense_2_options');
 	if(!is_array($options) || (count($options) < 1)) {
 		$oldData = get_option('AdsDisp');
-		if(!isset($oldData) && is_bool($oldData)) {
+		if(isset($oldData) && in_array($oldData, array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'))) {
+			$options = array ();
+			$temp = get_option('AdsDisp'); if(isset($temp) && ($temp != '')) { $options['AdsDisp'] = $temp; }
+			$temp = get_option('BegnAds'); if(isset($temp) && ($temp != '')) { $options['BegnAds'] = $temp; }
+			$temp = get_option('BegnRnd'); if(isset($temp) && ($temp != '')) { $options['BegnRnd'] = $temp; }
+			$temp = get_option('MiddAds'); if(isset($temp) && ($temp != '')) { $options['MiddAds'] = $temp; }
+			$temp = get_option('MiddRnd'); if(isset($temp) && ($temp != '')) { $options['MiddRnd'] = $temp; }
+			$temp = get_option('EndiAds'); if(isset($temp) && ($temp != '')) { $options['EndiAds'] = $temp; }
+			$temp = get_option('EndiRnd'); if(isset($temp) && ($temp != '')) { $options['EndiRnd'] = $temp; }
+			$temp = get_option('MoreAds'); if(isset($temp) && ($temp != '')) { $options['MoreAds'] = $temp; }
+			$temp = get_option('MoreRnd'); if(isset($temp) && ($temp != '')) { $options['MoreRnd'] = $temp; }
+			$temp = get_option('LapaAds'); if(isset($temp) && ($temp != '')) { $options['LapaAds'] = $temp; }
+			$temp = get_option('LapaRnd'); if(isset($temp) && ($temp != '')) { $options['LapaRnd'] = $temp; }
+			$temp = get_option('Par1Ads'); if(isset($temp) && ($temp != '')) { $options['Par1Ads'] = $temp; }
+			$temp = get_option('Par1Rnd'); if(isset($temp) && ($temp != '')) { $options['Par1Rnd'] = $temp; }
+			$temp = get_option('Par1Nup'); if(isset($temp) && ($temp != '')) { $options['Par1Nup'] = $temp; }
+			$temp = get_option('Par1Con'); if(isset($temp) && ($temp != '')) { $options['Par1Con'] = $temp; }
+			$temp = get_option('Par2Ads'); if(isset($temp) && ($temp != '')) { $options['Par2Ads'] = $temp; }
+			$temp = get_option('Par2Rnd'); if(isset($temp) && ($temp != '')) { $options['Par2Rnd'] = $temp; }
+			$temp = get_option('Par2Nup'); if(isset($temp) && ($temp != '')) { $options['Par2Nup'] = $temp; }
+			$temp = get_option('Par2Con'); if(isset($temp) && ($temp != '')) { $options['Par2Con'] = $temp; }
+			$temp = get_option('Par3Ads'); if(isset($temp) && ($temp != '')) { $options['Par3Ads'] = $temp; }
+			$temp = get_option('Par3Rnd'); if(isset($temp) && ($temp != '')) { $options['Par3Rnd'] = $temp; }
+			$temp = get_option('Par3Nup'); if(isset($temp) && ($temp != '')) { $options['Par3Nup'] = $temp; }
+			$temp = get_option('Par3Con'); if(isset($temp) && ($temp != '')) { $options['Par3Con'] = $temp; }
+			$temp = get_option('Img1Ads'); if(isset($temp) && ($temp != '')) { $options['Img1Ads'] = $temp; }
+			$temp = get_option('Img1Rnd'); if(isset($temp) && ($temp != '')) { $options['Img1Rnd'] = $temp; }
+			$temp = get_option('Img1Nup'); if(isset($temp) && ($temp != '')) { $options['Img1Nup'] = $temp; }
+			$temp = get_option('Img1Con'); if(isset($temp) && ($temp != '')) { $options['Img1Con'] = $temp; }
+			$temp = get_option('AppPost'); if(isset($temp) && ($temp != '')) { $options['AppPost'] = $temp; }
+			$temp = get_option('AppPage'); if(isset($temp) && ($temp != '')) { $options['AppPage'] = $temp; }
+			$temp = get_option('AppHome'); if(isset($temp) && ($temp != '')) { $options['AppHome'] = $temp; }
+			$temp = get_option('AppCate'); if(isset($temp) && ($temp != '')) { $options['AppCate'] = $temp; }
+			$temp = get_option('AppArch'); if(isset($temp) && ($temp != '')) { $options['AppArch'] = $temp; }
+			$temp = get_option('AppTags'); if(isset($temp) && ($temp != '')) { $options['AppTags'] = $temp; }
+			$temp = get_option('AppMaxA'); if(isset($temp) && ($temp != '')) { $options['AppMaxA'] = $temp; }
+			$temp = get_option('AppSide'); if(isset($temp) && ($temp != '')) { $options['AppSide'] = $temp; }
+			$temp = get_option('AppLogg'); if(isset($temp) && ($temp != '')) { $options['AppLogg'] = $temp; }
+			$temp = get_option('QckTags'); if(isset($temp) && ($temp != '')) { $options['QckTags'] = $temp; }
+			$temp = get_option('QckRnds'); if(isset($temp) && ($temp != '')) { $options['QckRnds'] = $temp; }
+			$temp = get_option('QckOffs'); if(isset($temp) && ($temp != '')) { $options['QckOffs'] = $temp; }
+			$temp = get_option('QckOfPs'); if(isset($temp) && ($temp != '')) { $options['QckOfPs'] = $temp; }
+			$temp = get_option('AdsCode1'); if(isset($temp)) { $options['AdsCode1'] = $temp; }
+			$temp = get_option('AdsAlign1'); if(isset($temp) && ($temp != '')) { $options['AdsAlign1'] = $temp; }
+			$temp = get_option('AdsMargin1'); if(isset($temp) && ($temp != '')) { $options['AdsMargin1'] = $temp; }
+			$temp = get_option('AdsCode2'); if(isset($temp)) { $options['AdsCode2'] = $temp; }
+			$temp = get_option('AdsAlign2'); if(isset($temp) && ($temp != '')) { $options['AdsAlign2'] = $temp; }
+			$temp = get_option('AdsMargin2'); if(isset($temp) && ($temp != '')) { $options['AdsMargin2'] = $temp; }
+			$temp = get_option('AdsCode3'); if(isset($temp)) { $options['AdsCode3'] = $temp; }
+			$temp = get_option('AdsAlign3'); if(isset($temp) && ($temp != '')) { $options['AdsAlign3'] = $temp; }
+			$temp = get_option('AdsMargin3'); if(isset($temp) && ($temp != '')) { $options['AdsMargin3'] = $temp; }
+			$temp = get_option('AdsCode4'); if(isset($temp)) { $options['AdsCode4'] = $temp; }
+			$temp = get_option('AdsAlign4'); if(isset($temp) && ($temp != '')) { $options['AdsAlign4'] = $temp; }
+			$temp = get_option('AdsMargin4'); if(isset($temp) && ($temp != '')) { $options['AdsMargin4'] = $temp; }
+			$temp = get_option('AdsCode5'); if(isset($temp)) { $options['AdsCode5'] = $temp; }
+			$temp = get_option('AdsAlign5'); if(isset($temp) && ($temp != '')) { $options['AdsAlign5'] = $temp; }
+			$temp = get_option('AdsMargin5'); if(isset($temp) && ($temp != '')) { $options['AdsMargin5'] = $temp; }
+			$temp = get_option('AdsCode6'); if(isset($temp)) { $options['AdsCode6'] = $temp; }
+			$temp = get_option('AdsAlign6'); if(isset($temp) && ($temp != '')) { $options['AdsAlign6'] = $temp; }
+			$temp = get_option('AdsMargin6'); if(isset($temp) && ($temp != '')) { $options['AdsMargin6'] = $temp; }
+			$temp = get_option('AdsCode7'); if(isset($temp)) { $options['AdsCode7'] = $temp; }
+			$temp = get_option('AdsAlign7'); if(isset($temp) && ($temp != '')) { $options['AdsAlign7'] = $temp; }
+			$temp = get_option('AdsMargin7'); if(isset($temp) && ($temp != '')) { $options['AdsMargin7'] = $temp; }
+			$temp = get_option('AdsCode8'); if(isset($temp)) { $options['AdsCode8'] = $temp; }
+			$temp = get_option('AdsAlign8'); if(isset($temp) && ($temp != '')) { $options['AdsAlign8'] = $temp; }
+			$temp = get_option('AdsMargin8'); if(isset($temp) && ($temp != '')) { $options['AdsMargin8'] = $temp; }
+			$temp = get_option('AdsCode9'); if(isset($temp)) { $options['AdsCode9'] = $temp; }
+			$temp = get_option('AdsAlign9'); if(isset($temp) && ($temp != '')) { $options['AdsAlign9'] = $temp; }
+			$temp = get_option('AdsMargin9'); if(isset($temp) && ($temp != '')) { $options['AdsMargin9'] = $temp; }
+			$temp = get_option('AdsCode10'); if(isset($temp)) { $options['AdsCode10'] = $temp; }
+			$temp = get_option('AdsAlign10'); if(isset($temp) && ($temp != '')) { $options['AdsAlign10'] = $temp; }
+			$temp = get_option('AdsMargin10'); if(isset($temp) && ($temp != '')) { $options['AdsMargin10'] = $temp; }
+			$temp = get_option('WidCode1'); if(isset($temp)) { $options['WidCode1'] = $temp; }
+			$temp = get_option('WidCode2'); if(isset($temp)) { $options['WidCode2'] = $temp; }
+			$temp = get_option('WidCode3'); if(isset($temp)) { $options['WidCode3'] = $temp; }
+			$temp = get_option('WidCode4'); if(isset($temp)) { $options['WidCode4'] = $temp; }
+			$temp = get_option('WidCode5'); if(isset($temp)) { $options['WidCode5'] = $temp; }
+			$temp = get_option('WidCode6'); if(isset($temp)) { $options['WidCode6'] = $temp; }
+			$temp = get_option('WidCode7'); if(isset($temp)) { $options['WidCode7'] = $temp; }
+			$temp = get_option('WidCode8'); if(isset($temp)) { $options['WidCode8'] = $temp; }
+			$temp = get_option('WidCode9'); if(isset($temp)) { $options['WidCode9'] = $temp; }
+			$temp = get_option('WidCode10'); if(isset($temp)) { $options['WidCode10'] = $temp; }
+			delete_option('AdsDisp');
+		} else {
 			$options = array (
 				'AdsDisp' => $QData['Default']['AdsDisp'],
 				'BegnAds' => $QData['Default']['BegnAds'],
@@ -155,91 +238,7 @@ function quick_adsense_2_get_options_with_defaults() {
 				'WidCode9' => '',
 				'WidCode10' => ''
 			);
-		} else {
-			$options = array (
-				'AdsDisp' => get_option('AdsDisp'),
-				'BegnAds' => get_option('BegnAds'),
-				'BegnRnd' => get_option('BegnRnd'),
-				'MiddAds' => get_option('MiddAds'),
-				'MiddRnd' => get_option('MiddRnd'),
-				'EndiAds' => get_option('EndiAds'),
-				'EndiRnd' => get_option('EndiRnd'),
-				'MoreAds' => get_option('MoreAds'),
-				'MoreRnd' => get_option('MoreRnd'),
-				'LapaAds' => get_option('LapaAds'),
-				'LapaRnd' => get_option('LapaRnd'),
-				'Par1Ads' => get_option('Par1Ads'),
-				'Par1Rnd' => get_option('Par1Rnd'),
-				'Par1Nup' => get_option('Par1Nup'),
-				'Par1Con' => get_option('Par1Con'),
-				'Par2Ads' => get_option('Par2Ads'),
-				'Par2Rnd' => get_option('Par2Rnd'),
-				'Par2Nup' => get_option('Par2Nup'),
-				'Par2Con' => get_option('Par2Con'),
-				'Par3Ads' => get_option('Par3Ads'),
-				'Par3Rnd' => get_option('Par3Rnd'),
-				'Par3Nup' => get_option('Par3Nup'),
-				'Par3Con' => get_option('Par3Con'),
-				'Img1Ads' => get_option('Img1Ads'),
-				'Img1Rnd' => get_option('Img1Rnd'),
-				'Img1Nup' => get_option('Img1Nup'),
-				'Img1Con' => get_option('Img1Con'),
-				'AppPost' => get_option('AppPost'),
-				'AppPage' => get_option('AppPage'),
-				'AppHome' => get_option('AppHome'),
-				'AppCate' => get_option('AppCate'),
-				'AppArch' => get_option('AppArch'),
-				'AppTags' => get_option('AppTags'),
-				'AppMaxA' => get_option('AppMaxA'),
-				'AppSide' => get_option('AppSide'),
-				'AppLogg' => get_option('AppLogg'),
-				'QckTags' => get_option('QckTags'),
-				'QckRnds' => get_option('QckRnds'),
-				'QckOffs' => get_option('QckOffs'),
-				'QckOfPs' => get_option('QckOfPs'),
-				'AdsCode1' => get_option('AdsCode1'),
-				'AdsAlign1' => get_option('AdsAlign1'),
-				'AdsMargin1' => get_option('AdsMargin1'),
-				'AdsCode2' => get_option('AdsCode2'),
-				'AdsAlign2' => get_option('AdsAlign2'),
-				'AdsMargin2' => get_option('AdsMargin2'),
-				'AdsCode3' => get_option('AdsCode3'),
-				'AdsAlign3' => get_option('AdsAlign3'),
-				'AdsMargin3' => get_option('AdsMargin3'),
-				'AdsCode4' => get_option('AdsCode4'),
-				'AdsAlign4' => get_option('AdsAlign4'),
-				'AdsMargin4' => get_option('AdsMargin4'),
-				'AdsCode5' => get_option('AdsCode5'),
-				'AdsAlign5' => get_option('AdsAlign5'),
-				'AdsMargin5' => get_option('AdsMargin5'),
-				'AdsCode6' => get_option('AdsCode6'),
-				'AdsAlign6' => get_option('AdsAlign6'),
-				'AdsMargin6' => get_option('AdsMargin6'),
-				'AdsCode7' => get_option('AdsCode7'),
-				'AdsAlign7' => get_option('AdsAlign7'),
-				'AdsMargin7' => get_option('AdsMargin7'),
-				'AdsCode8' => get_option('AdsCode8'),
-				'AdsAlign8' => get_option('AdsAlign8'),
-				'AdsMargin8' => get_option('AdsMargin8'),
-				'AdsCode9' => get_option('AdsCode9'),
-				'AdsAlign9' => get_option('AdsAlign9'),
-				'AdsMargin9' => get_option('AdsMargin9'),
-				'AdsCode10' => get_option('AdsCode10'),
-				'AdsAlign10' => get_option('AdsAlign10'),
-				'AdsMargin10' => get_option('AdsMargin10'),
-				'WidCode1' => get_option('WidCode1'),
-				'WidCode2' => get_option('WidCode2'),
-				'WidCode3' => get_option('WidCode3'),
-				'WidCode4' => get_option('WidCode4'),
-				'WidCode5' => get_option('WidCode5'),
-				'WidCode6' => get_option('WidCode6'),
-				'WidCode7' => get_option('WidCode7'),
-				'WidCode8' => get_option('WidCode8'),
-				'WidCode9' => get_option('WidCode9'),
-				'WidCode10' => get_option('WidCode10')
-			);
 		}
-		delete_option('AdsDisp');
 		update_option('quick_adsense_2_options', $options);
 	}
 	return $options;

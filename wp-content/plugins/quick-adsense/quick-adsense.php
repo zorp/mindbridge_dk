@@ -3,8 +3,8 @@
 	Plugin Name: Quick Adsense
 	Plugin URI: http://quickadsense.com/
 	Description: Quick Adsense offers a quicker & flexible way to insert Google Adsense or any Ads code into a blog post.
-	Author: quickadsense
-	Version: 1.9.4
+	Author: Quicksense
+	Version: 2.0.1
 	Author URI: http://quickadsense.com/
 */
 /*

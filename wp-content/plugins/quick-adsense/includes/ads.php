@@ -13,7 +13,7 @@ function quick_adsense_2_admin_print_footer_scripts() {
 	global $QData;
 	global $wpvcomp; 
 	$options = quick_adsense_2_get_options_with_defaults();
-	if ($options['QckTags']) { ?>
+	if (isset($options['QckTags']) && $options['QckTags']) { ?>
 	<script type="text/javascript">
 	wpvcomp = <?php echo(($wpvcomp==1)?"true":"false"); ?>;
 	edaddID = new Array();

@@ -20,7 +20,7 @@ function quick_adsense_2_plugin_action_links($links, $file) {
 
 function quick_adsense_2_settings_page() { ?>
     <div class="wrap">
-		<h2>Quick Adsense Setting <span style="font-size: 9pt; font-style: italic">( Version 2.0 )</span></h2>
+		<h2>Quick Adsense Setting <span style="font-size: 9pt; font-style: italic">( Version 2.0.1 )</span></h2>
 		<form method="post" action="options.php" name="wp_auto_commenter_form">
 			<?php settings_fields('quick_adsense_2_options'); ?>
 			<?php do_settings_sections('quick-adsense-2'); ?>
@@ -141,7 +141,7 @@ function quick_adsense_2_section_text() {
 		<tr valign="top">
 			<td style="width:110px"><?php _e('Position :<br/>(Default)'); ?></td>
 			<td>
-				<input type="checkbox" id="BegnAds" name="quick_adsense_2_options[BegnAds]" value="true" <?php if(isset($options['BegnAds']) && ($options['BegnAds'] == 'true')){echo('checked');} ?> onchange="checkinfo1('BegnRnd',this)" /> 
+				<input type="checkbox" id="BegnAds" name="quick_adsense_2_options[BegnAds]" value="true" <?php if(isset($options['BegnAds'])){echo('checked');} ?> onchange="checkinfo1('BegnRnd',this)" /> 
 				<?php _e('Assign') ; ?> 
 				<select id="BegnRnd" name="quick_adsense_2_options[BegnRnd]" onchange="selectinfo(this)">
 					<?php for ($i=0;$i<=$QData['Ads'];$i++) { ?>
@@ -150,7 +150,7 @@ function quick_adsense_2_section_text() {
 				</select> 
 				<?php _e('to <b>Beginning of Post</b>') ?><br/>
 				
-				<input type="checkbox" id="MiddAds" name="quick_adsense_2_options[MiddAds]" value="false" <?php if(isset($options['MiddAds']) && ($options['MiddAds'] == 'false')){echo('checked');} ?> onchange="checkinfo1('MiddRnd',this)" /> 
+				<input type="checkbox" id="MiddAds" name="quick_adsense_2_options[MiddAds]" value="false" <?php if(isset($options['MiddAds'])){echo('checked');} ?> onchange="checkinfo1('MiddRnd',this)" /> 
 				<?php _e('Assign') ; ?> 
 				<select id="MiddRnd" name="quick_adsense_2_options[MiddRnd]" onchange="selectinfo(this)">
 					<?php for ($i=0;$i<=$QData['Ads'];$i++) { ?>
@@ -159,7 +159,7 @@ function quick_adsense_2_section_text() {
 				</select> 
 				<?php _e('to <b>Middle of Post</b>') ?><br/>					
 					
-				<input type="checkbox" id="EndiAds" name="quick_adsense_2_options[EndiAds]" value="false" <?php if(isset($options['EndiAds']) && ($options['EndiAds'] == 'false')){echo('checked');} ?> onchange="checkinfo1('EndiRnd',this)" /> 
+				<input type="checkbox" id="EndiAds" name="quick_adsense_2_options[EndiAds]" value="false" <?php if(isset($options['EndiAds'])){echo('checked');} ?> onchange="checkinfo1('EndiRnd',this)" /> 
 				<?php _e('Assign') ; ?> 
 				<select id="EndiRnd" name="quick_adsense_2_options[EndiRnd]" onchange="selectinfo(this)">
 					<?php for ($i=0;$i<=$QData['Ads'];$i++) { ?>
@@ -168,7 +168,7 @@ function quick_adsense_2_section_text() {
 				</select> 
 				<?php _e('to <b>End of Post</b>') ?><br/> 
 				
-				<input type="checkbox" id="MoreAds" name="quick_adsense_2_options[MoreAds]" value="false" <?php if(isset($options['MoreAds']) && ($options['MoreAds'] == 'false')){echo('checked');} ?> onchange="checkinfo1('MoreRnd',this)" /> 
+				<input type="checkbox" id="MoreAds" name="quick_adsense_2_options[MoreAds]" value="false" <?php if(isset($options['MoreAds'])){echo('checked');} ?> onchange="checkinfo1('MoreRnd',this)" /> 
 				<?php _e('Assign') ; ?> 
 				<select id="MoreRnd" name="quick_adsense_2_options[MoreRnd]" onchange="selectinfo(this)">
 					<?php for ($i=0;$i<=$QData['Ads'];$i++) { ?>
@@ -178,7 +178,7 @@ function quick_adsense_2_section_text() {
 				<?php _e('right after <b>the') ?> 
 				<span style="font-family:Courier New,Courier,Fixed;">&lt;!--more--&gt;</span> <?php _e('tag') ?></b><br/> 
 				
-				<input type="checkbox" id="LapaAds" name="quick_adsense_2_options[LapaAds]" value="false" <?php if(isset($options['LapaAds']) && ($options['LapaAds'] == 'false')){echo('checked');} ?> onchange="checkinfo1('LapaRnd',this)" /> 
+				<input type="checkbox" id="LapaAds" name="quick_adsense_2_options[LapaAds]" value="false" <?php if(isset($options['LapaAds'])){echo('checked');} ?> onchange="checkinfo1('LapaRnd',this)" /> 
 				<?php _e('Assign') ; ?> 
 				<select id="LapaRnd" name="quick_adsense_2_options[LapaRnd]" onchange="selectinfo(this)">
 					<?php for ($i=0;$i<=$QData['Ads'];$i++) { ?>
@@ -188,7 +188,7 @@ function quick_adsense_2_section_text() {
 				<?php _e('right before <b>the last Paragraph</b>') ?><span style="color:#a00;"> <b>(New)</b></span><br/> 
 					
 				<?php for($j = 1; $j <= 3; $j++) { ?>	
-					<input type="checkbox" id="Par<?php echo $j; ?>Ads" name="quick_adsense_2_options[Par<?php echo $j; ?>Ads]" value="false" <?php if(isset($options['Par'.$j.'Ads']) && ($options['Par'.$j.'Ads'] == 'false')){echo('checked');} ?> onchange="checkinfo2(this,'Par<?php echo $j; ?>Rnd','Par<?php echo $j; ?>Nup','Par<?php echo $j; ?>Con')" /> 
+					<input type="checkbox" id="Par<?php echo $j; ?>Ads" name="quick_adsense_2_options[Par<?php echo $j; ?>Ads]" value="false" <?php if(isset($options['Par'.$j.'Ads'])){echo('checked');} ?> onchange="checkinfo2(this,'Par<?php echo $j; ?>Rnd','Par<?php echo $j; ?>Nup','Par<?php echo $j; ?>Con')" /> 
 					<?php _e('Assign') ; ?> 
 					<select id="Par<?php echo $j; ?>Rnd" name="quick_adsense_2_options[Par<?php echo $j; ?>Rnd]" onchange="selectinfo(this)">
 						<?php for ($i = 0; $i <= $QData['Ads']; $i++) { ?>
@@ -203,11 +203,11 @@ function quick_adsense_2_section_text() {
 						<?php } ?>
 					</select> &rarr; 
 					
-					<input type="checkbox" id="Par<?php echo $j; ?>Con" name="quick_adsense_2_options[Par<?php echo $j; ?>Con]" value="false" <?php if(isset($options['Par'.$j.'Con']) && ($options['Par'.$j.'Con'] == 'false')){echo('checked');} ?> /> 
+					<input type="checkbox" id="Par<?php echo $j; ?>Con" name="quick_adsense_2_options[Par<?php echo $j; ?>Con]" value="false" <?php if(isset($options['Par'.$j.'Con'])){echo('checked');} ?> /> 
 					<?php _e('to <b>End of Post</b> if fewer paragraphs are found.') ; ?><br/>
 				<?php } ?>
 				
-				<input type="checkbox" id="Img1Ads" name="quick_adsense_2_options[Img1Ads]" value="false" <?php if(isset($options['Img1Ads']) && ($options['Img1Ads'] == 'false')){echo('checked');} ?> onchange="checkinfo2(this,'Img1Rnd','Img1Nup','Img1Con')" /> 
+				<input type="checkbox" id="Img1Ads" name="quick_adsense_2_options[Img1Ads]" value="false" <?php if(isset($options['Img1Ads'])){echo('checked');} ?> onchange="checkinfo2(this,'Img1Rnd','Img1Nup','Img1Con')" /> 
 				<?php _e('Assign') ; ?> 
 				<select id="Img1Rnd" name="quick_adsense_2_options[Img1Rnd]" onchange="selectinfo(this)">
 					<?php for ($i = 0; $i <= $QData['Ads']; $i++) { ?>
@@ -220,7 +220,7 @@ function quick_adsense_2_section_text() {
 						<option id="Opt1Im<?php echo $i; ?>" value="<?php echo $i; ?>" <?php if(isset($options['Img1Nup']) && $options['Img1Nup']==(string)$i){echo('selected');} ?>><?php echo $i; ?></option>
 					<?php } ?>
 				</select> &rarr; 
-				<input type="checkbox" id="Img1Con" name="quick_adsense_2_options[Img1Con]" value="false" <?php if(isset($options['Img1Con']) && ($options['Img1Con'] == 'false')){echo('checked');} ?> /> 
+				<input type="checkbox" id="Img1Con" name="quick_adsense_2_options[Img1Con]" value="false" <?php if(isset($options['Img1Con'])){echo('checked');} ?> /> 
 				<?php _e('after <b>Image&#39;s outer</b>'); ?>
 				<b><span style="font-family:Courier New,Courier,Fixed;"> &lt;div&gt; wp-caption</span></b> if any.<span style="color:#a00;"> <b>(New)</b></span><br/><br/>
 				<script type="text/javascript">deftcheckinfo();</script>
@@ -230,21 +230,21 @@ function quick_adsense_2_section_text() {
 			<td style="width:110px"><?php _e('Appearance :'); ?></td>
 			<td>
 				<span>[ </span>
-				<input type="checkbox" id="AppPost" name="quick_adsense_2_options[AppPost]" value="true" <?php if(isset($options['AppPost']) && ($options['AppPost'] == 'true')){echo('checked');} ?> /> <?php _e('Posts'); ?>
-				<input type="checkbox" id="AppPage" name="quick_adsense_2_options[AppPage]" value="true" <?php if(isset($options['AppPage']) && ($options['AppPage'] == 'true')){echo('checked');} ?> /> <?php _e('Pages'); ?>
+				<input type="checkbox" id="AppPost" name="quick_adsense_2_options[AppPost]" value="true" <?php if(isset($options['AppPost'])){echo('checked');} ?> /> <?php _e('Posts'); ?>
+				<input type="checkbox" id="AppPage" name="quick_adsense_2_options[AppPage]" value="true" <?php if(isset($options['AppPage'])){echo('checked');} ?> /> <?php _e('Pages'); ?>
 				<span> ]</span><br/>
 				<span>[ </span>
-				<input type="checkbox" id="AppHome" name="quick_adsense_2_options[AppHome]" value="true" <?php if(isset($options['AppHome']) && ($options['AppHome'] == 'true')){echo('checked');} ?> /> <?php _e('Homepage'); ?>				
-				<input type="checkbox" id="AppCate" name="quick_adsense_2_options[AppCate]" value="true" <?php if(isset($options['AppCate']) && ($options['AppCate'] == 'true')){echo('checked');} ?> /> <?php _e('Categories'); ?>
-				<input type="checkbox" id="AppArch" name="quick_adsense_2_options[AppArch]" value="true" <?php if(isset($options['AppArch']) && ($options['AppArch'] == 'true')){echo('checked');} ?> /> <?php _e('Archives'); ?>
-				<input type="checkbox" id="AppTags" name="quick_adsense_2_options[AppTags]" value="true" <?php if(isset($options['AppTags']) && ($options['AppTags'] == 'true')){echo('checked');} ?> /> <?php _e('Tags'); ?>
+				<input type="checkbox" id="AppHome" name="quick_adsense_2_options[AppHome]" value="true" <?php if(isset($options['AppHome'])){echo('checked');} ?> /> <?php _e('Homepage'); ?>				
+				<input type="checkbox" id="AppCate" name="quick_adsense_2_options[AppCate]" value="true" <?php if(isset($options['AppCate'])){echo('checked');} ?> /> <?php _e('Categories'); ?>
+				<input type="checkbox" id="AppArch" name="quick_adsense_2_options[AppArch]" value="true" <?php if(isset($options['AppArch'])){echo('checked');} ?> /> <?php _e('Archives'); ?>
+				<input type="checkbox" id="AppTags" name="quick_adsense_2_options[AppTags]" value="true" <?php if(isset($options['AppTags'])){echo('checked');} ?> /> <?php _e('Tags'); ?>
 				<span> ] &rarr; </span>
-				<input type="checkbox" id="AppMaxA" name="quick_adsense_2_options[AppMaxA]" value="true" <?php if(isset($options['AppMaxA']) && ($options['AppMaxA'] == 'true')){echo('checked');} ?> /> <?php _e('Place all possible Ads on these pages.'); ?><br/>
+				<input type="checkbox" id="AppMaxA" name="quick_adsense_2_options[AppMaxA]" value="true" <?php if(isset($options['AppMaxA'])){echo('checked');} ?> /> <?php _e('Place all possible Ads on these pages.'); ?><br/>
 				<span>[ </span>
-				<input type="checkbox" id="AppSide" name="quick_adsense_2_options[AppSide]" value="true" <?php if(isset($options['AppSide']) && ($options['AppSide'] == 'true')){echo('checked');} ?> /> <?php _e('Disable AdsWidget on Homepage'); ?>
+				<input type="checkbox" id="AppSide" name="quick_adsense_2_options[AppSide]" value="true" <?php if(isset($options['AppSide'])){echo('checked');} ?> /> <?php _e('Disable AdsWidget on Homepage'); ?>
 				<span> ]</span><br/>
 				<span>[ </span>				
-				<input type="checkbox" id="AppLogg" name="quick_adsense_2_options[AppLogg]" value="true" <?php if(isset($options['AppLogg']) && ($options['AppLogg'] == 'true')){echo('checked');} ?> /> <?php _e('Hide Ads when user is logged in to Wordpress'); ?>
+				<input type="checkbox" id="AppLogg" name="quick_adsense_2_options[AppLogg]" value="true" <?php if(isset($options['AppLogg'])){echo('checked');} ?> /> <?php _e('Hide Ads when user is logged in to Wordpress'); ?>
 				<span> ]</span><br/><br/>
 			</td>
 		</tr>	
@@ -264,10 +264,10 @@ function quick_adsense_2_section_text() {
 					<li><?php _e('Insert <span style="font-family:Courier New,Courier,Fixed;color:#050">&lt;!--OffBegin--&gt;</span>, <span style="font-family:Courier New,Courier,Fixed;color:#050">&lt;!--OffMiddle--&gt;</span>, <span style="font-family:Courier New,Courier,Fixed;color:#050">&lt;!--OffEnd--&gt;</span> to <b>disable Ads at Beginning, Middle</b> or <b>End of Post</b>.'); ?><span style="color:#a00;"> <b>(New)</b></span></li>								
 					<li><?php _e('Insert <span style="font-family:Courier New,Courier,Fixed;color:#050">&lt;!--OffAfMore--&gt;</span>, <span style="font-family:Courier New,Courier,Fixed;color:#050">&lt;!--OffBfLastPara--&gt;</span> to <b>disable Ads right after the <span style="font-family:Courier New,Courier,Fixed;">&lt;!--more--&gt;</span> tag</b>, or <b>right before the last Paragraph</b>.'); ?><span style="color:#a00;"> <b>(New)</b></span></li>												
 				</ol>
-				[ <input type="checkbox" id="QckTags" name="quick_adsense_2_options[QckTags]" value="true" <?php if(isset($options['QckTags']) && ($options['QckTags'] == 'true')){echo('checked');} ?> /> <?php _e('Show Quicktag Buttons on the HTML Edit Post SubPanel'); ?> ]<br/>
-				[ <input type="checkbox" id="QckRnds" name="quick_adsense_2_options[QckRnds]" value="true" <?php if(isset($options['QckRnds']) && ($options['QckRnds'] == 'true')){echo('checked');} ?> /> <?php _e('Hide <span style="font-family:Courier New,Courier,Fixed;color:#050">&lt;!--RndAds--&gt;</span> from Quicktag Buttons'); ?> ]<br/>	
-				[ <input type="checkbox" id="QckOffs" name="quick_adsense_2_options[QckOffs]" value="true" <?php if(isset($options['QckOffs']) && ($options['QckOffs'] == 'true')){echo('checked');} ?> /> <?php _e('Hide <span style="font-family:Courier New,Courier,Fixed;color:#050">&lt;!--NoAds--&gt;</span>, <span style="font-family:Courier New,Courier,Fixed;color:#050">&lt;!--OffDef--&gt;</span>, <span style="font-family:Courier New,Courier,Fixed;color:#050">&lt;!--OffWidget--&gt;</span> from Quicktag Buttons'); ?> ]<br/>								
-				[ <input type="checkbox" id="QckOfPs" name="quick_adsense_2_options[QckOfPs]" value="true" <?php if(isset($options['QckOfPs']) && ($options['QckOfPs'] == 'true')){echo('checked');} ?> /> <?php _e('Hide <span style="font-family:Courier New,Courier,Fixed;color:#050">&lt;!--OffBegin--&gt;</span>, <span style="font-family:Courier New,Courier,Fixed;color:#050">&lt;!--OffMiddle--&gt;</span>, <span style="font-family:Courier New,Courier,Fixed;color:#050">&lt;!--OffEnd--&gt;</span>, <span style="font-family:Courier New,Courier,Fixed;color:#050">&lt;!--OffAfMore--&gt;</span>, <span style="font-family:Courier New,Courier,Fixed;color:#050">&lt;!--OffBfLastPara--&gt;</span> from Quicktag Buttons'); ?> ]<br/>								
+				[ <input type="checkbox" id="QckTags" name="quick_adsense_2_options[QckTags]" value="true" <?php if(isset($options['QckTags'])){echo('checked');} ?> /> <?php _e('Show Quicktag Buttons on the HTML Edit Post SubPanel'); ?> ]<br/>
+				[ <input type="checkbox" id="QckRnds" name="quick_adsense_2_options[QckRnds]" value="true" <?php if(isset($options['QckRnds'])){echo('checked');} ?> /> <?php _e('Hide <span style="font-family:Courier New,Courier,Fixed;color:#050">&lt;!--RndAds--&gt;</span> from Quicktag Buttons'); ?> ]<br/>	
+				[ <input type="checkbox" id="QckOffs" name="quick_adsense_2_options[QckOffs]" value="true" <?php if(isset($options['QckOffs'])){echo('checked');} ?> /> <?php _e('Hide <span style="font-family:Courier New,Courier,Fixed;color:#050">&lt;!--NoAds--&gt;</span>, <span style="font-family:Courier New,Courier,Fixed;color:#050">&lt;!--OffDef--&gt;</span>, <span style="font-family:Courier New,Courier,Fixed;color:#050">&lt;!--OffWidget--&gt;</span> from Quicktag Buttons'); ?> ]<br/>								
+				[ <input type="checkbox" id="QckOfPs" name="quick_adsense_2_options[QckOfPs]" value="true" <?php if(isset($options['QckOfPs'])){echo('checked');} ?> /> <?php _e('Hide <span style="font-family:Courier New,Courier,Fixed;color:#050">&lt;!--OffBegin--&gt;</span>, <span style="font-family:Courier New,Courier,Fixed;color:#050">&lt;!--OffMiddle--&gt;</span>, <span style="font-family:Courier New,Courier,Fixed;color:#050">&lt;!--OffEnd--&gt;</span>, <span style="font-family:Courier New,Courier,Fixed;color:#050">&lt;!--OffAfMore--&gt;</span>, <span style="font-family:Courier New,Courier,Fixed;color:#050">&lt;!--OffBfLastPara--&gt;</span> from Quicktag Buttons'); ?> ]<br/>								
 				<span class="description" style="display:block;font-style:italic;padding-top:10px"><?php _e('Tags can be inserted into a post via the additional Quicktag Buttons at the HTML Edit Post SubPanel.'); ?></span><br/>
 			</td>
 		</tr>	
