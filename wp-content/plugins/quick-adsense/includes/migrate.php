@@ -3,7 +3,7 @@ global $QData;
 $QData['AdsWid'] = 10;
 $QData['Ads'] = 10;
 $QData['Name'] = 'Quick Adsense';
-$QData['Version'] = '2.0';
+$QData['Version'] = '2.2';
 $QData['URI'] = 'http://quickadsense.com/';
 $QData['AdsWidName'] = 'AdsWidget%d (Quick Adsense)';
 $QData['Default'] = array(

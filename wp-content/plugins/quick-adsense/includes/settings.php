@@ -20,7 +20,7 @@ function quick_adsense_2_plugin_action_links($links, $file) {
 
 function quick_adsense_2_settings_page() { ?>
     <div class="wrap">
-		<h2>Quick Adsense Setting <span style="font-size: 9pt; font-style: italic">( Version 2.0.1 )</span></h2>
+		<h2>Quick Adsense Setting <span style="font-size: 9pt; font-style: italic">( Version 2.2 )</span></h2>
 		<form method="post" action="options.php" name="wp_auto_commenter_form">
 			<?php settings_fields('quick_adsense_2_options'); ?>
 			<?php do_settings_sections('quick-adsense-2'); ?>
