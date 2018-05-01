@@ -3,7 +3,7 @@ Contributors: quickadsense
 Tags: WordPress Plugin, adsense, google adsense, random adsense, random ads, advertising, adsense insertion, ad manager, ad, yahoo, google, ads, text insertion, widget, sidebar, admin, posts, plugin
 Requires at least: 4.0
 Tested up to: 4.9.4
-Stable tag: 2.2
+Stable tag: 2.3.2
 
 Quick Adsense offers a quicker & flexible way to insert Google Adsense or any Ads code into a blog post.
 
@@ -48,6 +48,17 @@ Sign up for a [Google Adsense Account](http://adsense.google.com/) to generate r
 Please feedback to [http://quickadsense.com/](http://quickadsense.com/) for any bug you might have found, or any suggestion you like to add. 
 
 == Change Log ==
+= 2.3.2 =
+* Bug fixes
+* 3 option fields have been removed
+* The API limiter added
+* QuickTag issues have been fixed
+
+= 2.3 =
+* Updated ads.txt modification logic
+* Introduced monetization with video intelligence AG
+* UI fixes
+
 = 2.2 =
 * Fixed functionality issues
 
