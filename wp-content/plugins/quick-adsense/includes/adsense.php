@@ -1,7 +1,7 @@
 <?php
 /*Begin Scripts */
-add_action('admin_footer', 'quick_adsense_vi_admin_notice_admin_footer');
-function quick_adsense_vi_admin_notice_admin_footer() {
+add_action('admin_footer', 'quick_adsense_adstxt_adsense_admin_notice_admin_footer');
+function quick_adsense_adstxt_adsense_admin_notice_admin_footer() {
 	echo '<script type="text/javascript">';
 	echo "jQuery(document).ready(function() {";
 		echo "jQuery('.quick_adsense_adstxt_adsense_notice').on('click', '.notice-dismiss', function() {";

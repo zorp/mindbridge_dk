@@ -1,15 +1,17 @@
 <?php
 /*Begin Vi Admin Notice */
-add_action('admin_footer', 'quick_adsense_vi_adstxt_adsense_admin_footer');
-function quick_adsense_vi_adstxt_adsense_admin_footer() {
+add_action('admin_footer', 'quick_adsense_vi_admin_notice_admin_footer');
+function quick_adsense_vi_admin_notice_admin_footer() {
 	echo '<script type="text/javascript">';
 	echo "jQuery(document).ready(function() {";
-		echo "jQuery.post(";
-			echo "jQuery('#quick_adsense_admin_notice_ajax').val(), {";
-				echo "'action': 'quick_adsense_vi_admin_notice_dismiss',";
-				echo "'quick_adsense_admin_notice_nonce': jQuery('#quick_adsense_admin_notice_nonce').val(),";
-			echo "}, function(response) { }";
-		echo ");";
+		echo "jQuery('.quick_adsense_notice').on('click', '.notice-dismiss', function() {";
+			echo "jQuery.post(";
+				echo "jQuery('#quick_adsense_admin_notice_ajax').val(), {";
+					echo "'action': 'quick_adsense_vi_admin_notice_dismiss',";
+					echo "'quick_adsense_admin_notice_nonce': jQuery('#quick_adsense_admin_notice_nonce').val(),";
+				echo "}, function(response) { }";
+			echo ");";
+		echo "});";
 	echo "});";
 	echo '</script>';
 }
@@ -321,6 +323,17 @@ function quick_adsense_vi_customize_adcode_form_get_content() {
 			echo '</div>';
 		echo '</div>';
 	echo '</div>';
+	echo '<div style="margin: 15px 0; padding: 5px; border: 1px solid #999999; border-radius: 5px; position: relative;">';
+		echo '<label style="font-weight: bold; position: absolute; left: 15px; top: -10px; background: #FFFFFF; color: #111111; padding: 0px 10px;">vi stories: GDPR Compliance</label>';
+		echo '<div style="margin: 10px 0 10px; padding: 0 10px; position: relative;">';
+			echo '<p>Enable GDPR Compliance confirmation notice on your site for visitors from EU.<br />If you disable this option make sure you are using a data usage authorization system on your website to remain GDPR complaint.</p>';
+			$gdprComplainceOptions = array(
+				array('text' => 'Status : Do not Show GDPR Authorization Popup', 'value' => 'false'),
+				array('text' => 'Status : Show GDPR Authorization Popup', 'value' => 'true')
+			);
+			echo quickadsense_get_control('select', '', 'quick_adsense_vi_code_settings_show_gdpr_authorization', 'quick_adsense_vi_code_settings_show_gdpr_authorization', ((isset($vicodeSettings['show_gdpr_authorization']))?$vicodeSettings['show_gdpr_authorization']:''), $gdprComplainceOptions);
+		echo '</div>';
+	echo '</div>';
 	echo '<script type="text/javascript">';
 		echo 'jQuery(".ui-dialog-buttonset").find("button").first().find("span:nth-child(2)").hide().after("<span class=\'ui-button-text\' style=\'background: #0085ba; border-color: #0073aa #006799 #006799; color: #fff; padding-left: 1em;\'>Save changes</span>");';
 		echo 'jQuery(".ui-dialog-buttonset").find("button").first().find("span:nth-child(1)").hide();';
@@ -344,6 +357,8 @@ function quick_adsense_vi_customize_adcode_form_save_action() {
 	$vicodeSettings['native_text_color'] = ((isset($_POST['quick_adsense_vi_code_settings_native_text_color']))?$_POST['quick_adsense_vi_code_settings_native_text_color']:'');
 	$vicodeSettings['font_family'] = ((isset($_POST['quick_adsense_vi_code_settings_font_family']))?$_POST['quick_adsense_vi_code_settings_font_family']:'');
 	$vicodeSettings['font_size'] = ((isset($_POST['quick_adsense_vi_code_settings_font_size']))?$_POST['quick_adsense_vi_code_settings_font_size']:'');
+	
+	$vicodeSettings['show_gdpr_authorization'] = ((isset($_POST['quick_adsense_vi_code_settings_show_gdpr_authorization']))?$_POST['quick_adsense_vi_code_settings_show_gdpr_authorization']:'');
 	update_option('quick_adsense_vi_code_settings', $vicodeSettings);
 	$viCodeStatus = quick_adsense_vi_api_set_vi_code($vicodeSettings);
 	if(is_array($viCodeStatus) && (isset($viCodeStatus['status'])) && ($viCodeStatus['status'] == 'error')) {

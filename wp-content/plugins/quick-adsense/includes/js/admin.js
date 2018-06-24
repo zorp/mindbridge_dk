@@ -749,6 +749,7 @@ function quick_adsense_vi_customize_adcode() {
 					var quick_adsense_vi_code_settings_native_text_color = jQuery('#quick_adsense_vi_code_settings_native_text_color').val();
 					var quick_adsense_vi_code_settings_font_family = jQuery('#quick_adsense_vi_code_settings_font_family').val();
 					var quick_adsense_vi_code_settings_font_size = jQuery('#quick_adsense_vi_code_settings_font_size').val();
+					var quick_adsense_vi_code_settings_show_gdpr_authorization = jQuery('#quick_adsense_vi_code_settings_show_gdpr_authorization').val();
 					jQuery('.ui-dialog-content').html('<div class="quick_adsense_ajaxloader"></div>');
 					jQuery('.quick_adsense_ajaxloader').show();
 					jQuery.post(
@@ -764,6 +765,7 @@ function quick_adsense_vi_customize_adcode() {
 							'quick_adsense_vi_code_settings_native_text_color': quick_adsense_vi_code_settings_native_text_color,
 							'quick_adsense_vi_code_settings_font_family': quick_adsense_vi_code_settings_font_family,
 							'quick_adsense_vi_code_settings_font_size': quick_adsense_vi_code_settings_font_size,
+							'quick_adsense_vi_code_settings_show_gdpr_authorization': quick_adsense_vi_code_settings_show_gdpr_authorization,
 						}, function(response) {
 							if(response.indexOf('###SUCCESS###') !== -1) {
 								jQuery('#quick_adsense_vi_embedcode_status').val('Configured');

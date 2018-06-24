@@ -217,7 +217,13 @@ function monsterinsights_remove_conflicting_asset_files() {
 		'imagify-sweetalert', // Imagify 
 		'smls-backend-style', // Smart Logo Showcase Lite
 		'wp-reactjs-starter', // wp-real-media-library
+		'control-panel-modal-plugin', // Ken Theme
+		'theme-admin-css', // Vitrine Theme
+		'qi-framework-styles', //  Artisan Nayma Theme
+		'artisan-pages-style', // Artisan Pages Plugin
 		'control-panel-modal-plugin', // Ken Theme 
+		'sweetalert', //  Church Suite Theme by Webnus
+		'woo_stock_alerts_admin_css', // WooCommerce bolder product alerts
 	);
 	
 	$scripts = array(
@@ -229,25 +235,54 @@ function monsterinsights_remove_conflicting_asset_files() {
 		'tweeetshare_custom_script', // TweetShare - Click To Tweet
 		'imagify-promise-polyfill', // Imagify 
 		'imagify-sweetalert', // Imagify 
-	    'imagify-chart', // Imagify
+		'imagify-chart', // Imagify
 		'chartjs', // Comet Cache Pro
 		'wp-reactjs-starter', // wp-real-media-library
 		'jquery-tooltipster', // WP Real Media Library
-    	'jquery-nested-sortable', // WP Real Media Library
+		'jquery-nested-sortable', // WP Real Media Library
 		'jquery-aio-tree', // WP Real Media Library
 		'wp-media-picker', // WP Real Media Library
 		'rml-general', // WP Real Media Library
 		'rml-library', // WP Real Media Library
 		'rml-grid', // WP Real Media Library
-        'rml-list', // WP Real Media Library
-        'rml-modal', // WP Real Media Library
-        'rml-order', // WP Real Media Library
-        'rml-meta', // WP Real Media Library
-        'rml-uploader',  // WP Real Media Library
-        'rml-options',  // WP Real Media Library
-        'rml-usersettings',  // WP Real Media Library
-        'rml-main', // WP Real Media Library
-        'control-panel-sweet-alert', // Ken Theme
+		'rml-list', // WP Real Media Library
+		'rml-modal', // WP Real Media Library
+		'rml-order', // WP Real Media Library
+		'rml-meta', // WP Real Media Library
+		'rml-uploader',  // WP Real Media Library
+		'rml-options',  // WP Real Media Library
+		'rml-usersettings',  // WP Real Media Library
+		'rml-main', // WP Real Media Library
+		'control-panel-sweet-alert', // Ken Theme
+		'sweet-alert-js', // Vitrine Theme
+		'theme-admin-script', // Vitrine Theme
+		'sweetalert', //  Church Suite Theme by Webnus
+		'be_alerts_charts', //  WooCommerce bolder product alerts
+ 		'magayo-lottery-results',  //  Magayo Lottery Results
+		'control-panel-sweet-alert', // Ken Theme
+		'cpm_chart', // WP Project Manager
+		'adminscripts', //  Artisan Nayma Theme
+		'artisan-pages-script', // Artisan Pages Plugin
+		'tooltipster', // Grand News Theme
+		'fancybox', // Grand News Theme
+		'grandnews-admin-cript', // Grand News Theme
+		'colorpicker', // Grand News Theme
+		'eye', // Grand News Theme
+		'utils', // Grand News Theme
+		'icheck', // Grand News Theme
+		'learn-press-chart', //  LearnPress
+		'theme-script-main', //  My Listing Theme by 27collective
+		'selz', //  Selz eCommerce
+		'tie-admin-scripts', //   Tie Theme
+		'blossomthemes-toolkit', //   BlossomThemes Toolkit
+		'illdy-widget-upload-image', //   Illdy Companion By Colorlib
+		'moment.js', // WooCommerce Table Rate Shipping
+		'default', //   Bridge Theme
+		'qode-tax-js', //   Bridge Theme
+		'wc_smartship_moment_js', // WooCommerce Posti SmartShip by markup.fi
+		'ecwid-admin-js', // Fixes Conflict for Ecwid Shopping Cart
+		'td-wp-admin-js', // Newspaper by tagDiv
+		'moment', // Screets Live Chat
 	);
 
 	if ( ! empty( $styles ) ) {
@@ -322,6 +357,16 @@ function monsterinsights_remove_conflicting_asset_files() {
 			}
 		}
 	}
+
+	// Remove actions from themes that are not following best practices and break the admin doing so
+		// Theme: Newspaper by tagDiv
+			remove_action('admin_enqueue_scripts', 'load_wp_admin_js');
+			remove_action('admin_enqueue_scripts', 'load_wp_admin_css');
+			remove_action('admin_print_scripts-widgets.php', 'td_on_admin_print_scripts_farbtastic');
+			remove_action('admin_print_styles-widgets.php', 'td_on_admin_print_styles_farbtastic');
+			remove_action('admin_print_footer_scripts', 'check_if_media_uploads_is_loaded', 9999);
+			remove_action('print_media_templates', 'td_custom_gallery_settings_hook');
+			remove_action('print_media_templates', 'td_change_backbone_js_hook');
 }
 add_action( 'admin_enqueue_scripts', 'monsterinsights_remove_conflicting_asset_files', 9999 );
 
@@ -412,27 +457,50 @@ add_action('admin_print_scripts', 'hide_non_monsterinsights_warnings');
  *
  * @return string Upgrade link.
  */
-function monsterinsights_get_upgrade_link() {
+function monsterinsights_get_upgrade_link( $medium = '', $campaign = '', $url = '' ) {
+	$url = monsterinsights_get_url( $medium, $campaign, $url, false );
 
-	if ( class_exists( 'MonsterInsights' ) ) {
-		// User is using MonsterInsights, so just take them to the Pricing page.
-		// Note: On the Addons screen, if the user has a license, we won't hit this function,
-		// as the API will tell us the direct URL to send the user to based on their license key,
-		// so they see pro-rata pricing.
-		return 'https://www.monsterinsights.com/lite/?utm_source=proplugin&utm_medium=link&utm_campaign=WordPress';
+	if ( monsterinsights_is_pro_version() ) {
+		return esc_url( $url );
 	}
 
-	$shareasale_id = monsterinsights_get_shareasale_id();
-	
-	// If at this point we still don't have an ID, we really don't have one!
-	// Just return the standard upgrade URL.
-	if ( empty( $shareasale_id ) ) {
-		return 'https://www.monsterinsights.com/lite/?utm_source=liteplugin&utm_medium=link&utm_campaign=WordPress';
-	}
+	// Get the ShareASale ID
+	$shareasale_id   = monsterinsights_get_shareasale_id();
 
-	// If here, we have a ShareASale ID
-	// Return ShareASale URL with redirect.
-	return 'https://www.shareasale.com/r.cfm?u=' . $shareasale_id . '&b=971799&m=69975&afftrack=&urllink=monsterinsights%2Ecom%2Flite%2F';
+	// If we have a shareasale ID return the shareasale url
+	if ( ! empty( $shareasale_id ) ) {
+		$shareasale_id  = absint( $shareasale_id );
+		return esc_url( monsterinsights_get_shareasale_url( $shareasale_id, $url ) );
+	} else {
+		return esc_url( $url );
+	}
+}
+
+function monsterinsights_get_url( $medium = '', $campaign = '', $url = '', $escape = true  ) {
+	// Setup Campaign variables
+	$source          = monsterinsights_is_pro_version()   ? 'proplugin' : 'liteplugin';
+	$medium          = ! empty( $medium )   ? $medium     : 'defaultmedium';
+	$campaign        = ! empty( $campaign ) ? $campaign   : 'defaultcampaign';
+	$content 		 = MONSTERINSIGHTS_VERSION;
+	$default_url     = monsterinsights_is_pro_version()   ? '' : 'lite/';
+	$url             = ! empty( $url ) ? $url : 'https://www.monsterinsights.com/' . $default_url;
+
+	// Put together redirect URL
+	$url = add_query_arg(
+		array(
+		    'utm_source'   => $source,   // Pro/Lite Plugin
+		    'utm_medium'   => sanitize_key( $medium ),   // Area of MonsterInsights (example Reports)
+		    'utm_campaign' => sanitize_key( $campaign ), // Which link (example eCommerce Report)
+		    'utm_content'  => $content,  // Version number of MI
+		),
+		trailingslashit( $url )
+	);
+
+	if ( $escape ) {
+		return esc_url( $url );
+	} else {
+		return $url;
+	}
 }
 
 function monsterinsights_get_shareasale_id() {
@@ -449,7 +517,31 @@ function monsterinsights_get_shareasale_id() {
 
 	// Whether we have an ID or not, filter the ID.
 	$shareasale_id = apply_filters( 'monsterinsights_shareasale_id', $shareasale_id );
+
+	// Ensure it's a number
+	$shareasale_id = absint( $shareasale_id );
 	return $shareasale_id;
+}
+
+// Passed in with mandatory default redirect and shareasaleid from monsterinsights_get_upgrade_link
+function monsterinsights_get_shareasale_url( $shareasale_id, $shareasale_redirect ) {
+   // Check if there's a constant.
+	$custom = false;
+	if ( defined( 'MONSTERINSIGHTS_SHAREASALE_REDIRECT_URL' ) ) {
+		$shareasale_redirect = MONSTERINSIGHTS_SHAREASALE_REDIRECT_URL;
+		$custom 			 = true;
+	}
+
+	// If there's no constant, check if there's an option.
+	if ( empty( $custom ) ) {
+		$shareasale_redirect = get_option( 'monsterinsights_shareasale_redirect_url', '' );
+		$custom 			 = true;
+	}
+
+	// Whether we have an ID or not, filter the ID.
+	$shareasale_redirect = apply_filters( 'monsterinsights_shareasale_redirect_url', $shareasale_redirect, $custom );
+	$shareasale_url      = sprintf( 'http://www.shareasale.com/r.cfm?B=971799&U=%s&M=69975&urllink=%s', $shareasale_id, $shareasale_redirect );
+	return $shareasale_url;
 }
 
 function monsterinsights_settings_ublock_error_js(){

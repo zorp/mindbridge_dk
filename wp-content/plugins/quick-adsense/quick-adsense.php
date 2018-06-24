@@ -4,7 +4,7 @@
 	Plugin URI: http://quickadsense.com/
 	Description: Quick Adsense offers a quicker & flexible way to insert Google Adsense or any Ads code into a blog post.
 	Author: Quicksense
-	Version: 2.3.2
+	Version: 2.4
 	Author URI: http://quickadsense.com/
 */
 /*
@@ -32,8 +32,10 @@ require_once(dirname(__FILE__).'/includes/content.php');
 require_once(dirname(__FILE__).'/includes/api/vi.php');
 require_once(dirname(__FILE__).'/includes/api/vi-constants.php');
 require_once(dirname(__FILE__).'/includes/vi.php');
+require_once(dirname(__FILE__).'/includes/vi-gdpr.php');
 require_once(dirname(__FILE__).'/includes/adsense.php');
 /*End Include Files*/
 
-register_deactivation_hook(__FILE__, 'quick_adsense_admin_notice_reactivate');
+register_deactivation_hook(__FILE__, 'quick_adsense_vi_admin_notice_reactivate');
+register_activation_hook(__FILE__, 'quick_adsense_vi_api_reset_settings');
 ?>

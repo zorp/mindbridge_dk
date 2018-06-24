@@ -2,8 +2,8 @@
 Contributors: quickadsense
 Tags: WordPress Plugin, adsense, google adsense, random adsense, random ads, advertising, adsense insertion, ad manager, ad, yahoo, google, ads, text insertion, widget, sidebar, admin, posts, plugin
 Requires at least: 4.0
-Tested up to: 4.9.4
-Stable tag: 2.3.2
+Tested up to: 4.9.6
+Stable tag: 2.4
 
 Quick Adsense offers a quicker & flexible way to insert Google Adsense or any Ads code into a blog post.
 
@@ -48,6 +48,10 @@ Sign up for a [Google Adsense Account](http://adsense.google.com/) to generate r
 Please feedback to [http://quickadsense.com/](http://quickadsense.com/) for any bug you might have found, or any suggestion you like to add. 
 
 == Change Log ==
+= 2.4 =
+* GDPR consent management module added
+* Updated Privacy policy
+
 = 2.3.2 =
 * Bug fixes
 * 3 option fields have been removed
@@ -173,5 +177,20 @@ Please feedback to [http://quickadsense.com/](http://quickadsense.com/) for any 
 = 1.0 =
 * Initial public release. 
 * Date: 21-Sep-2009
+
+== Privacy Policy ==
+
+Users privacy is very important to us and we make extra effort not to collect data about the users to the maximum extend possible.
+However to provide enhanced functionality we utilize the APIs from different third party services as listed below and the usage of those API are in accordance with their privacy policies.
+
+= video intelligence =
+
+The plugin provides deep integration with video intelligence to provide enhanced features and for easy integration with their services.
+This third party API and features are utilized only when you enable or use video inteligence related features in the plugin admin and the usage of thier API and features are in accordance to their privacy policy.
+
+video intelligence ("vi") as a third party, needs to process the user's technical data such as cookie ID, IP Address, Geo-Location and Device ID to personalize content and advertising and analyse our traffic.
+You can find below a link vi's Legal webpage where there are transparently presented all GDPR relevant information.
+Please access the link to check vi's Privacy Policy, Terms&Conditions pages, Opt Out Mechanism, Vendor and Purposes lists.
+https://www.vi.ai/legals/
 
 
